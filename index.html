@@ -2,99 +2,869 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>thememorylabmaastricht.com is also for sale</title>
-  <meta name="description" content="This domain is also for sale: 1000 bowls of pho at Nga Ngo restaurant.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+  <meta name="description" content="This domain thememorylabmaastricht.com is ALSO for sale: 1000 bowls of pho at Nga Ngo restaurant. Snap a photo while you think about it.">
+  <meta property="og:title" content="thememorylabmaastricht.com is ALSO for sale">
+  <meta property="og:description" content="1000 bowls of pho at Nga Ngo restaurant.">
+  <meta property="og:url" content="https://thememorylabmaastricht.com/">
+  <meta name="theme-color" content="#efe4d2">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
   <style>
     :root {
-      --bg: #15100c;
-      --ink: #f6ecdc;
-      --muted: #a8968a;
-      --gold: #e8b04a;
+      --desk: #efe4d2;
+      --dot: #e3d3b9;
+      --ink: #2a1d16;
+      --muted: #8a7565;
+      --red: #c8102e;
+      --red-dark: #9e0c24;
+      --gold: #e0a526;
+      --paper: #fdfaf4;
+      --cam: #f3e9d7;
+      --cam-shade: #d9c6a8;
+      --pw: 170px;
     }
-    * { box-sizing: border-box; margin: 0; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
     body {
-      min-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      display: flex;
+      background-color: var(--desk);
+      background-image:
+        radial-gradient(var(--dot) 15%, transparent 16%),
+        radial-gradient(var(--dot) 15%, transparent 16%);
+      background-size: 22px 22px;
+      background-position: 0 0, 11px 11px;
+      color: var(--ink);
+      font-family: "Permanent Marker", cursive;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: none;
+    }
+
+    .camera-zone {
+      position: relative;
+      z-index: 20;
+      flex: 0 0 46%;
+      max-width: 560px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      padding: 48px 16px;
-      background:
-        radial-gradient(ellipse at 50% 40%, rgba(232, 176, 74, 0.16) 0, transparent 60%),
-        var(--bg);
-      color: var(--ink);
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+      justify-content: flex-end;
+      padding: 20px 20px 36px;
+    }
+    .hint {
+      margin: 0 0 18px;
+      font-size: 15px;
+      color: var(--muted);
       text-align: center;
+      transform: rotate(-3deg);
     }
-    h1 {
-      max-width: 18ch;
-      font-family: "Fraunces", Georgia, serif;
-      font-weight: 600;
-      font-size: clamp(2.2rem, 7vw, 4.75rem);
-      line-height: 1.12;
+    .hint small { display: block; font-size: 11px; opacity: 0.8; }
+    .camera {
+      position: relative;
+      width: min(380px, 100%);
+      aspect-ratio: 1 / 0.82;
     }
-    h1 .domain {
-      display: block;
-      margin: 0.2em 0;
-      font-family: "Inter", system-ui, sans-serif;
-      font-weight: 500;
-      font-size: clamp(0.9rem, 5.4vw, 2rem);
-      letter-spacing: 0.02em;
-      color: var(--muted);
-      white-space: nowrap;
+    .slot {
+      position: absolute;
+      left: 50%;
+      bottom: 88.5%;
+      z-index: 15;
+      width: var(--pw);
+      transform: translateX(-50%);
+      display: flex;
+      align-items: flex-end;
+      pointer-events: none;
     }
-    .nowrap { white-space: nowrap; }
-    h1 em {
-      font-style: italic;
-      font-weight: 800;
-      color: var(--gold);
+    .slot .polaroid { position: relative; pointer-events: auto; }
+    .camera-top {
+      position: absolute;
+      top: 8%;
+      left: 18%;
+      right: 18%;
+      height: 18%;
+      z-index: 19;
+      border-radius: 22px 22px 0 0;
+      background: linear-gradient(#3d2c22, var(--ink));
     }
-    .price {
-      margin-top: 28px;
-      font-family: "Fraunces", Georgia, serif;
-      font-size: clamp(1.4rem, 4vw, 2.4rem);
-      line-height: 1.3;
+    .camera-top::after {
+      content: "";
+      position: absolute;
+      top: 16%;
+      left: 10%;
+      right: 10%;
+      height: 6px;
+      border-radius: 3px;
+      background: #0e0906;
+      box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
     }
-    .price strong {
-      display: block;
-      font-weight: 800;
-      font-size: 2.6em;
-      line-height: 1;
-      color: var(--gold);
+    .camera-body {
+      position: absolute;
+      top: 24%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      border-radius: 30px;
+      background: linear-gradient(160deg, #fcf5e8 0%, var(--cam) 45%, var(--cam-shade) 100%);
+      box-shadow:
+        0 26px 40px -14px rgba(42, 29, 22, 0.5),
+        inset 0 -7px 0 rgba(0, 0, 0, 0.08),
+        inset 0 2px 0 #fff;
     }
-    .dutch {
-      margin-top: 28px;
-      color: var(--muted);
-      font-size: clamp(1rem, 2.4vw, 1.25rem);
-      line-height: 1.6;
+    .stripe {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 44%;
+      height: 12%;
+      background: linear-gradient(var(--red) 0 55%, var(--gold) 55% 100%);
     }
-    .dutch strong { color: var(--ink); font-weight: 700; }
-    a {
+    .flash-window {
+      position: absolute;
+      top: 9%;
+      left: 7%;
+      width: 17%;
+      height: 22%;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fff 0%, #e4eaed 40%, #b6c0c6 100%);
+      box-shadow: inset 0 0 0 3px var(--ink), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .viewfinder {
+      position: absolute;
+      top: 10%;
+      right: 8%;
+      width: 12%;
+      height: 16%;
+      border-radius: 6px;
+      background: radial-gradient(circle at 35% 35%, #5d6d75, #0b0d0e 70%);
+      box-shadow: inset 0 0 0 3px var(--ink);
+    }
+    .lens {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 46%;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: radial-gradient(circle, #4a3a30 0 58%, #18110c 59% 66%, #3d2e25 67% 74%, #100b07 75% 100%);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+    .lens-glass {
+      position: relative;
+      width: 58%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #000;
+      box-shadow: inset 0 0 14px #000;
+    }
+    .lens-glass video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+      opacity: 0.92;
+    }
+    .lens-glass::after {
+      content: "";
+      position: absolute;
+      top: 12%;
+      left: 16%;
+      width: 34%;
+      height: 20%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      transform: rotate(-35deg);
+      filter: blur(2px);
+    }
+    .lens-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      font-size: clamp(24px, 6vw, 46px);
+      background: radial-gradient(circle, #3a2a20, #000);
+    }
+    .lens.no-cam .lens-fallback { display: grid; }
+    .shutter {
+      position: absolute;
+      left: 8%;
+      bottom: 16%;
+      width: 13%;
+      aspect-ratio: 1;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff4d63, var(--red) 60%, var(--red-dark));
+      box-shadow: 0 5px 0 var(--red-dark), 0 8px 14px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.08s, box-shadow 0.08s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .shutter::after {
+      content: "SNAP";
+      position: absolute;
+      top: 118%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+    .shutter:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--red-dark), 0 3px 6px rgba(0, 0, 0, 0.3); }
+    .shutter.invite { animation: invite 1.6s ease-out infinite; }
+    @keyframes invite {
+      0% { box-shadow: 0 5px 0 var(--red-dark), 0 0 0 0 rgba(200, 16, 46, 0.55); }
+      100% { box-shadow: 0 5px 0 var(--red-dark), 0 0 0 16px rgba(200, 16, 46, 0); }
+    }
+    .brand {
+      position: absolute;
+      right: 8%;
+      bottom: 8%;
+      font-size: clamp(11px, 2.6vw, 15px);
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+    }
+    .cta {
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      margin-top: 40px;
-      padding: 15px 32px;
-      border: 1.5px solid var(--gold);
+      margin-top: 28px;
+      padding: 13px 26px;
       border-radius: 999px;
-      color: var(--gold);
-      font-size: 1.05rem;
-      font-weight: 700;
+      background: var(--red);
+      color: #fff;
+      font-size: 17px;
       text-decoration: none;
-      transition: background 0.2s ease, color 0.2s ease;
+      box-shadow: 0 6px 0 var(--red-dark), 0 14px 24px -8px rgba(200, 16, 46, 0.6);
+      transition: transform 0.15s, box-shadow 0.15s;
     }
-    a:hover, a:focus-visible { background: var(--gold); color: var(--bg); }
+    .cta:hover { transform: translateY(-2px); }
+    .cta:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--red-dark); }
+
+    .desk { position: relative; flex: 1; }
+    .sale {
+      position: absolute;
+      top: 9%;
+      left: 50%;
+      width: min(92%, 720px);
+      transform: translateX(-50%) rotate(-2deg);
+      text-align: center;
+      pointer-events: none;
+    }
+    .sale h1 {
+      margin: 0;
+      font-weight: 400;
+      font-size: clamp(26px, 3.6vw, 52px);
+      line-height: 1.15;
+    }
+    .sale .domain {
+      display: block;
+      margin: 0.15em 0;
+      font-size: clamp(16px, 2vw, 28px);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .sale em { font-style: normal; color: var(--red); }
+    .sale .price {
+      margin: 12px 0 0;
+      font-size: clamp(20px, 2.4vw, 34px);
+    }
+    .sale .price strong { font-weight: 400; color: var(--red); }
+    .sale .dutch {
+      margin: 10px 0 0;
+      font-size: clamp(14px, 1.4vw, 19px);
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .nowrap { white-space: nowrap; }
+
+    .polaroid {
+      position: absolute;
+      width: var(--pw);
+      cursor: grab;
+      touch-action: none;
+      perspective: 1000px;
+      transition: transform 0.25s ease;
+    }
+    .polaroid.dragging { cursor: grabbing; transition: transform 0.08s linear; }
+    .polaroid-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .polaroid.flipped .polaroid-inner { transform: rotateY(180deg); }
+    .face {
+      position: relative;
+      padding: 10px 10px 52px;
+      background: var(--paper);
+      box-shadow: 0 4px 12px rgba(42, 29, 22, 0.22);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .polaroid.dragging .face { box-shadow: 0 22px 40px rgba(42, 29, 22, 0.38); }
+    .back {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      padding: 14px;
+      transform: rotateY(180deg);
+    }
+    .polaroid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--ink);
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+    .caption {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 22px;
+      min-height: 17px;
+      overflow: hidden;
+      font-size: 15px;
+      line-height: 1.1;
+      text-align: center;
+      white-space: nowrap;
+      outline: none;
+      cursor: text;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .caption:empty::before { content: "write here ✎"; opacity: 0.35; }
+    .date {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 7px;
+      font-size: 10px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .note {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      border: 1px dashed #d8c7ad;
+      background: repeating-linear-gradient(transparent 0 23px, #eadcc6 23px 24px);
+      color: var(--ink);
+      font: 15px/24px "Permanent Marker", cursive;
+      resize: none;
+      outline: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .flip {
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: opacity 0.2s;
+    }
+    .polaroid.placed:hover .flip { opacity: 0.9; pointer-events: auto; }
+    @media (hover: none) {
+      .polaroid.placed .flip { opacity: 0.85; pointer-events: auto; }
+    }
+    .polaroid.ejecting { animation: eject 1.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+    @keyframes eject {
+      from { transform: translateY(100%); }
+      to { transform: translateY(14px); }
+    }
+
+    .toolbar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 5000;
+      display: flex;
+      gap: 10px;
+    }
+    .tool {
+      padding: 8px 16px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: rgba(253, 250, 244, 0.92);
+      color: var(--ink);
+      font: 14px "Permanent Marker", cursive;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+    }
+    .tool:hover { background: var(--ink); color: #fff; }
+    .tool.reset { border-color: var(--red); color: var(--red); }
+    .tool.reset:hover { background: var(--red); color: #fff; }
+    .tool:active { transform: scale(0.95); }
+
+    .flash {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease-out;
+    }
+    .flash.on { opacity: 1; transition: none; }
+
+    .capturing .camera-zone,
+    .capturing .toolbar { visibility: hidden; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shutter.invite { animation: none; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pw: 140px; }
+      body { flex-direction: column-reverse; }
+      .camera-zone {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+        padding: 0 16px 18px;
+      }
+      .camera { width: min(250px, 62vw); }
+      .hint { margin-bottom: 8px; font-size: 13px; }
+      .cta { margin-top: 18px; padding: 10px 20px; font-size: 15px; }
+      .sale { top: 62px; }
+      .sale h1 { font-size: clamp(22px, 6.4vw, 30px); }
+      .sale .domain { font-size: clamp(13px, 4.6vw, 20px); }
+      .sale .price { margin-top: 8px; font-size: clamp(17px, 4.8vw, 22px); }
+      .sale .dutch { font-size: 13px; }
+      .toolbar { top: 12px; right: 12px; gap: 8px; }
+      .tool { padding: 6px 12px; font-size: 12px; }
+      .caption { font-size: 13px; }
+    }
   </style>
 </head>
 <body>
-  <h1>This domain <span class="domain">thememorylabmaastricht.com</span> is <em>ALSO</em> for sale:</h1>
-  <p class="price"><strong>1000</strong> bowls of pho at Nga Ngo restaurant</p>
-  <p class="dutch" lang="nl">Dit domein <span class="nowrap">thememorylabmaastricht.com</span> is <strong>OOK</strong> te koop:<br>1000 kommen pho bij restaurant Nga Ngo</p>
-  <a href="https://thememorylabmaastricht.nl">Click here · Klik hier <span aria-hidden="true">→</span></a>
+  <div class="toolbar">
+    <button class="tool" id="download-btn" type="button">DOWNLOAD</button>
+    <button class="tool reset" id="reset-btn" type="button">RESET</button>
+  </div>
+
+  <section class="camera-zone">
+    <p class="hint">Press the red button 📸<small>photos never leave your browser</small></p>
+    <div class="camera">
+      <div class="slot" id="slot"></div>
+      <div class="camera-top"></div>
+      <div class="camera-body">
+        <div class="stripe"></div>
+        <div class="flash-window"></div>
+        <div class="viewfinder"></div>
+        <div class="lens" id="lens">
+          <div class="lens-glass">
+            <video id="cam-feed" autoplay playsinline muted></video>
+            <div class="lens-fallback">🍜</div>
+          </div>
+        </div>
+        <button class="shutter invite" id="shutter" type="button" aria-label="Take a photo"></button>
+        <span class="brand">PHO-CAM 1000</span>
+      </div>
+    </div>
+    <a class="cta" href="https://thememorylabmaastricht.nl">Click here · Klik hier <span aria-hidden="true">→</span></a>
+  </section>
+
+  <main class="desk" id="desk">
+    <div class="sale">
+      <h1>This domain <span class="domain">thememorylabmaastricht.com</span> is <em>ALSO</em> for sale:</h1>
+      <p class="price"><strong>1000</strong> bowls of pho at Nga Ngo restaurant</p>
+      <p class="dutch" lang="nl">Dit domein <span class="nowrap">thememorylabmaastricht.com</span> is <em>OOK</em> te koop:<br>1000 kommen pho bij restaurant Nga Ngo</p>
+    </div>
+  </main>
+
+  <div class="flash" id="flash"></div>
+
+  <script>
+    const video = document.getElementById('cam-feed');
+    const lens = document.getElementById('lens');
+    const shutter = document.getElementById('shutter');
+    const slot = document.getElementById('slot');
+    const flash = document.getElementById('flash');
+    const desk = document.getElementById('desk');
+    const resetBtn = document.getElementById('reset-btn');
+    const downloadBtn = document.getElementById('download-btn');
+
+    const PHOTO_SIZE = 480;
+    const CAPTION_MAX = 18;
+    const NOTE_MAX = 60;
+    const SNAP_COOLDOWN_MS = 700;
+    const UNDEVELOPED_FILTER = 'blur(12px) sepia(0.7) brightness(1.6) contrast(0.6)';
+    const DEVELOPED_FILTER = 'blur(0px) sepia(0) brightness(1) contrast(1)';
+
+    const developAnimations = new WeakMap();
+    let topZ = 100;
+    let audioCtx = null;
+    let snapLocked = false;
+
+    const demoCards = [
+      {
+        card: { background: '#c8102e', color: '#fdfaf4', lines: [{ text: '1000', size: 150 }, { text: 'bowls of pho', size: 50 }] },
+        caption: 'the price',
+        top: 52,
+        left: 8,
+        rot: -8,
+      },
+      {
+        card: { background: '#f6ecdc', color: '#2a1d16', lines: [{ text: '🍜', size: 190 }, { text: 'Nga Ngo', size: 56 }] },
+        caption: 'pay here',
+        top: 47,
+        left: 36,
+        rot: 5,
+      },
+      {
+        card: { background: '#15100c', color: '#e0a526', lines: [{ text: 'ALSO', size: 130 }, { text: 'for sale', size: 70 }] },
+        caption: 'ook te koop!',
+        top: 56,
+        left: 62,
+        rot: -3,
+      },
+    ];
+
+    function todayString() {
+      const now = new Date();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      return `${now.getFullYear()}/${month}/${day}`;
+    }
+
+    function newPhotoCanvas() {
+      const canvas = document.createElement('canvas');
+      canvas.width = PHOTO_SIZE;
+      canvas.height = PHOTO_SIZE;
+      return canvas;
+    }
+
+    function addVignette(ctx) {
+      const center = PHOTO_SIZE / 2;
+      const gradient = ctx.createRadialGradient(center, center, PHOTO_SIZE * 0.3, center, center, PHOTO_SIZE * 0.72);
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      gradient.addColorStop(1, 'rgba(40, 20, 10, 0.35)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, PHOTO_SIZE, PHOTO_SIZE);
+    }
+
+    function paintCard({ background, color, lines }) {
+      const canvas = newPhotoCanvas();
+      const ctx = canvas.getContext('2d');
+      const gap = 14;
+      const totalHeight = lines.reduce((sum, line) => sum + line.size, 0) + gap * (lines.length - 1);
+      ctx.fillStyle = background;
+      ctx.fillRect(0, 0, PHOTO_SIZE, PHOTO_SIZE);
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      let y = (PHOTO_SIZE - totalHeight) / 2;
+      for (const line of lines) {
+        ctx.font = `${line.size}px "Permanent Marker", "Apple Color Emoji", "Segoe UI Emoji", sans-serif`;
+        ctx.fillText(line.text, PHOTO_SIZE / 2, y + line.size / 2, PHOTO_SIZE - 40);
+        y += line.size + gap;
+      }
+      addVignette(ctx);
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
+    function captureFrame() {
+      if (!video.videoWidth) {
+        return paintCard({
+          background: '#f6ecdc',
+          color: '#2a1d16',
+          lines: [{ text: '🍜', size: 180 }, { text: 'no camera,', size: 44 }, { text: 'only pho', size: 44 }],
+        });
+      }
+      const canvas = newPhotoCanvas();
+      const ctx = canvas.getContext('2d');
+      const size = Math.min(video.videoWidth, video.videoHeight);
+      ctx.filter = 'contrast(1.1) saturate(1.2) sepia(0.15)';
+      ctx.translate(PHOTO_SIZE, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(
+        video,
+        (video.videoWidth - size) / 2,
+        (video.videoHeight - size) / 2,
+        size,
+        size,
+        0,
+        0,
+        PHOTO_SIZE,
+        PHOTO_SIZE
+      );
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.filter = 'none';
+      addVignette(ctx);
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
+    function setRotation(el, degrees, scale = 1) {
+      el.dataset.rot = String(degrees);
+      el.style.transform = `rotate(${degrees}deg) scale(${scale})`;
+    }
+
+    function liftToBody(el) {
+      if (el.parentElement === document.body) return;
+      const rect = el.getBoundingClientRect();
+      const left = rect.left + rect.width / 2 - el.offsetWidth / 2;
+      const top = rect.top + rect.height / 2 - el.offsetHeight / 2;
+      el.classList.remove('ejecting');
+      document.body.appendChild(el);
+      el.style.left = `${left}px`;
+      el.style.top = `${top}px`;
+      setRotation(el, Number(el.dataset.rot || 0));
+    }
+
+    function startDeveloping(el) {
+      const img = el.querySelector('img');
+      const animation = img.animate(
+        [{ filter: UNDEVELOPED_FILTER }, { filter: DEVELOPED_FILTER }],
+        { duration: 8000, easing: 'ease-in-out', fill: 'forwards' }
+      );
+      developAnimations.set(el, animation);
+    }
+
+    function wireCaption(caption) {
+      caption.addEventListener('input', () => {
+        if (caption.textContent.length <= CAPTION_MAX) return;
+        caption.textContent = caption.textContent.slice(0, CAPTION_MAX);
+        const range = document.createRange();
+        range.selectNodeContents(caption);
+        range.collapse(false);
+        const selection = window.getSelection();
+        selection.removeAllRanges();
+        selection.addRange(range);
+      });
+      caption.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        caption.blur();
+      });
+    }
+
+    function makeDraggable(el) {
+      el.addEventListener('pointerdown', (event) => {
+        if (event.target.closest('.caption, .note, .flip')) return;
+        event.preventDefault();
+        liftToBody(el);
+        el.style.zIndex = String(++topZ);
+        el.classList.add('dragging');
+        const animation = developAnimations.get(el);
+        if (animation) animation.playbackRate = 4;
+
+        const startX = event.clientX;
+        const startY = event.clientY;
+        const startLeft = parseFloat(el.style.left);
+        const startTop = parseFloat(el.style.top);
+        let lastX = event.clientX;
+        let tilt = 0;
+        el.setPointerCapture(event.pointerId);
+
+        const onMove = (moveEvent) => {
+          const halfWidth = el.offsetWidth / 2;
+          const left = Math.min(window.innerWidth - halfWidth, Math.max(-halfWidth, startLeft + moveEvent.clientX - startX));
+          const top = Math.min(window.innerHeight - 60, Math.max(-el.offsetHeight / 2, startTop + moveEvent.clientY - startY));
+          el.style.left = `${left}px`;
+          el.style.top = `${top}px`;
+          const rawTilt = Math.max(-12, Math.min(12, (moveEvent.clientX - lastX) * 1.5));
+          tilt = tilt * 0.7 + rawTilt * 0.3;
+          lastX = moveEvent.clientX;
+          setRotation(el, tilt, 1.06);
+        };
+
+        const onEnd = () => {
+          el.removeEventListener('pointermove', onMove);
+          el.removeEventListener('pointerup', onEnd);
+          el.removeEventListener('pointercancel', onEnd);
+          el.classList.remove('dragging');
+          el.classList.add('placed');
+          setRotation(el, Math.round(Math.random() * 18 - 9));
+        };
+
+        el.addEventListener('pointermove', onMove);
+        el.addEventListener('pointerup', onEnd);
+        el.addEventListener('pointercancel', onEnd);
+      });
+    }
+
+    function createPolaroid(src, caption = '') {
+      const el = document.createElement('div');
+      el.className = 'polaroid';
+      el.innerHTML = `
+        <div class="polaroid-inner">
+          <div class="face front">
+            <img alt="Instant photo">
+            <div class="caption" contenteditable="plaintext-only" spellcheck="false"></div>
+            <div class="date"></div>
+          </div>
+          <div class="face back">
+            <textarea class="note" maxlength="${NOTE_MAX}" placeholder="Write a note…"></textarea>
+          </div>
+        </div>
+        <button class="flip" type="button" aria-label="Flip photo">↻</button>
+      `;
+      el.querySelector('img').src = src;
+      el.querySelector('.caption').textContent = caption;
+      el.querySelector('.date').textContent = todayString();
+      el.querySelector('.flip').addEventListener('click', () => el.classList.toggle('flipped'));
+      wireCaption(el.querySelector('.caption'));
+      makeDraggable(el);
+      return el;
+    }
+
+    async function spawnDemos() {
+      await document.fonts.load('48px "Permanent Marker"').catch(() => {});
+      for (const demo of demoCards) {
+        const el = createPolaroid(paintCard(demo.card), demo.caption);
+        el.style.top = `${demo.top}%`;
+        el.style.left = `${demo.left}%`;
+        el.classList.add('placed');
+        setRotation(el, demo.rot);
+        desk.appendChild(el);
+      }
+    }
+
+    function playShutterSound() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      audioCtx = audioCtx || new AudioContextClass();
+      const now = audioCtx.currentTime;
+
+      const clickLength = Math.floor(audioCtx.sampleRate * 0.12);
+      const clickBuffer = audioCtx.createBuffer(1, clickLength, audioCtx.sampleRate);
+      const samples = clickBuffer.getChannelData(0);
+      for (let i = 0; i < clickLength; i++) samples[i] = (Math.random() * 2 - 1) * (1 - i / clickLength);
+      const click = audioCtx.createBufferSource();
+      click.buffer = clickBuffer;
+      const clickFilter = audioCtx.createBiquadFilter();
+      clickFilter.type = 'highpass';
+      clickFilter.frequency.value = 1800;
+      const clickGain = audioCtx.createGain();
+      clickGain.gain.setValueAtTime(0.5, now);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      click.connect(clickFilter).connect(clickGain).connect(audioCtx.destination);
+      click.start(now);
+
+      const motor = audioCtx.createOscillator();
+      motor.type = 'sawtooth';
+      motor.frequency.setValueAtTime(90, now + 0.15);
+      motor.frequency.linearRampToValueAtTime(130, now + 1.4);
+      const motorFilter = audioCtx.createBiquadFilter();
+      motorFilter.type = 'lowpass';
+      motorFilter.frequency.value = 600;
+      const motorGain = audioCtx.createGain();
+      motorGain.gain.setValueAtTime(0.0001, now + 0.15);
+      motorGain.gain.linearRampToValueAtTime(0.06, now + 0.25);
+      motorGain.gain.setValueAtTime(0.06, now + 1.3);
+      motorGain.gain.linearRampToValueAtTime(0.0001, now + 1.5);
+      motor.connect(motorFilter).connect(motorGain).connect(audioCtx.destination);
+      motor.start(now + 0.15);
+      motor.stop(now + 1.55);
+    }
+
+    function fireFlash() {
+      flash.classList.add('on');
+      requestAnimationFrame(() => requestAnimationFrame(() => flash.classList.remove('on')));
+    }
+
+    function eject(src) {
+      const previous = slot.firstElementChild;
+      if (previous) {
+        liftToBody(previous);
+        previous.style.zIndex = String(++topZ);
+        previous.classList.add('placed');
+      }
+      const el = createPolaroid(src);
+      el.classList.add('ejecting');
+      slot.appendChild(el);
+      startDeveloping(el);
+    }
+
+    function snap() {
+      if (snapLocked) return;
+      snapLocked = true;
+      setTimeout(() => { snapLocked = false; }, SNAP_COOLDOWN_MS);
+      shutter.classList.remove('invite');
+      fireFlash();
+      playShutterSound();
+      eject(captureFrame());
+    }
+
+    async function startCamera() {
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        lens.classList.add('no-cam');
+        return;
+      }
+      try {
+        video.srcObject = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } },
+          audio: false,
+        });
+      } catch {
+        lens.classList.add('no-cam');
+      }
+    }
+
+    async function downloadCollage() {
+      if (!window.html2canvas) return;
+      document.body.classList.add('capturing');
+      try {
+        const canvas = await window.html2canvas(document.body, { backgroundColor: '#efe4d2', scale: 2, useCORS: true });
+        const link = document.createElement('a');
+        link.download = 'thememorylabmaastricht-pho-collage.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch {
+        alert('Could not create the collage, please try again.');
+      } finally {
+        document.body.classList.remove('capturing');
+      }
+    }
+
+    function resetDesk() {
+      document.querySelectorAll('.polaroid').forEach((el) => el.remove());
+      spawnDemos();
+    }
+
+    shutter.addEventListener('click', snap);
+    resetBtn.addEventListener('click', resetDesk);
+    downloadBtn.addEventListener('click', downloadCollage);
+    document.addEventListener('keydown', (event) => {
+      if (event.code !== 'Space') return;
+      if (event.target.closest && event.target.closest('.caption, .note, button, a')) return;
+      event.preventDefault();
+      snap();
+    });
+
+    spawnDemos();
+    startCamera();
+  </script>
 </body>
 </html>
