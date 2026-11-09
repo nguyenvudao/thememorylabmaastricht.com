@@ -3,8 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>thememorylabmaastricht.com is for sale</title>
+  <title>thememorylabmaastricht.com is also for sale</title>
+  <meta name="description" content="This domain is also for sale: 1000 bowls of pho at Nga Ngo restaurant.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #15100c;
+      --ink: #f6ecdc;
+      --muted: #a8968a;
+      --gold: #e8b04a;
+    }
     * { box-sizing: border-box; margin: 0; }
     body {
       min-height: 100vh;
@@ -12,39 +23,78 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 40px;
-      padding: 24px 16px;
-      background: #ffffff;
-      color: #111111;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      padding: 48px 16px;
+      background:
+        radial-gradient(ellipse at 50% 40%, rgba(232, 176, 74, 0.16) 0, transparent 60%),
+        var(--bg);
+      color: var(--ink);
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
       text-align: center;
     }
     h1 {
-      font-size: clamp(2rem, 7vw, 5rem);
-      line-height: 1.2;
-      word-break: break-word;
+      max-width: 18ch;
+      font-family: "Fraunces", Georgia, serif;
+      font-weight: 600;
+      font-size: clamp(2.2rem, 7vw, 4.75rem);
+      line-height: 1.12;
     }
-    .dutch {
-      margin-top: -16px;
-      color: #555555;
-      font-size: clamp(1.2rem, 3.5vw, 2.2rem);
+    h1 .domain {
+      display: block;
+      margin: 0.2em 0;
+      font-family: "Inter", system-ui, sans-serif;
+      font-weight: 500;
+      font-size: clamp(0.9rem, 5.4vw, 2rem);
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .nowrap { white-space: nowrap; }
+    h1 em {
+      font-style: italic;
+      font-weight: 800;
+      color: var(--gold);
+    }
+    .price {
+      margin-top: 28px;
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(1.4rem, 4vw, 2.4rem);
       line-height: 1.3;
     }
+    .price strong {
+      display: block;
+      font-weight: 800;
+      font-size: 2.6em;
+      line-height: 1;
+      color: var(--gold);
+    }
+    .dutch {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.4vw, 1.25rem);
+      line-height: 1.6;
+    }
+    .dutch strong { color: var(--ink); font-weight: 700; }
     a {
-      padding: 14px 32px;
-      border: 2px solid #111111;
-      border-radius: 10px;
-      color: #111111;
-      font-size: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 40px;
+      padding: 15px 32px;
+      border: 1.5px solid var(--gold);
+      border-radius: 999px;
+      color: var(--gold);
+      font-size: 1.05rem;
       font-weight: 700;
       text-decoration: none;
+      transition: background 0.2s ease, color 0.2s ease;
     }
-    a:hover { background: #111111; color: #ffffff; }
+    a:hover, a:focus-visible { background: var(--gold); color: var(--bg); }
   </style>
 </head>
 <body>
-  <h1>This domain thememorylabmaastricht.com is ALSO for sale:<br>1000 bowls of pho at Nga Ngo restaurant</h1>
-  <p class="dutch" lang="nl">Dit domein thememorylabmaastricht.com is OOK te koop:<br>1000 kommen pho bij restaurant Nga Ngo</p>
-  <a href="https://thememorylabmaastricht.nl">Click here · Klik hier</a>
+  <h1>This domain <span class="domain">thememorylabmaastricht.com</span> is <em>ALSO</em> for sale:</h1>
+  <p class="price"><strong>1000</strong> bowls of pho at Nga Ngo restaurant</p>
+  <p class="dutch" lang="nl">Dit domein <span class="nowrap">thememorylabmaastricht.com</span> is <strong>OOK</strong> te koop:<br>1000 kommen pho bij restaurant Nga Ngo</p>
+  <a href="https://thememorylabmaastricht.nl">Click here · Klik hier <span aria-hidden="true">→</span></a>
 </body>
 </html>
