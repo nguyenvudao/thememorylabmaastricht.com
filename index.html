@@ -254,21 +254,151 @@
     .cta:hover { transform: translateY(-2px); }
     .cta:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--red-dark); }
 
-    .desk { position: relative; flex: 1; }
+    .desk {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      padding: 72px 24px 24px;
+    }
     .sale {
-      position: absolute;
-      top: 9%;
-      left: 50%;
-      width: min(92%, 720px);
-      transform: translateX(-50%) rotate(-2deg);
+      width: min(100%, 720px);
+      transform: rotate(-2deg);
       text-align: center;
       pointer-events: none;
     }
     .sale h1 {
       margin: 0;
       font-weight: 400;
-      font-size: clamp(26px, 3.6vw, 52px);
+      font-size: clamp(24px, 3vw, 44px);
       line-height: 1.15;
+    }
+
+    .wall {
+      --fscale: 1;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding-top: 44px;
+    }
+    .frame {
+      --y1: #f7b6c6;
+      --y2: #e8899f;
+      --y3: #fff4f6;
+      --petal: #fffaf4;
+      --bud: #f6c445;
+      position: relative;
+      z-index: 0;
+      padding: 16px;
+      border-radius: 6px;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 3px),
+        linear-gradient(135deg, var(--y1) 25%, transparent 25%) -6px 0 / 12px 12px,
+        linear-gradient(225deg, var(--y1) 25%, transparent 25%) -6px 0 / 12px 12px,
+        linear-gradient(315deg, var(--y1) 25%, transparent 25%) 0 0 / 12px 12px,
+        linear-gradient(45deg, var(--y1) 25%, transparent 25%) 0 0 / 12px 12px,
+        var(--y2);
+      box-shadow: 0 12px 20px -10px rgba(42, 29, 22, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .frame:nth-child(1) { transform: rotate(-2deg); }
+    .frame:nth-child(2) {
+      --y1: #b9d4ae;
+      --y2: #8fb385;
+      --y3: #f4f9f0;
+      --petal: #f7b6c6;
+      transform: rotate(1deg);
+    }
+    .frame:nth-child(3) {
+      --y1: #f3cf73;
+      --y2: #dcaa3c;
+      --y3: #fffaeb;
+      --petal: #b9d4ae;
+      --bud: #e8899f;
+      transform: rotate(2.5deg);
+    }
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      z-index: -1;
+      border-radius: 10px;
+      background: radial-gradient(circle, var(--y2) 0 5.5px, transparent 6px) 0 0 / 12px 12px round;
+    }
+    .frame.drop-target {
+      transform: scale(1.06) rotate(0deg);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), 0 18px 28px -10px rgba(42, 29, 22, 0.55);
+    }
+    .hanger {
+      position: absolute;
+      top: -38px;
+      left: 15%;
+      width: 70%;
+      height: 40px;
+      color: var(--y2);
+      overflow: visible;
+    }
+    .pompom {
+      position: absolute;
+      top: -46px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-left: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, var(--y3), var(--y1) 50%, var(--y2));
+      box-shadow:
+        -4px -3px 0 -2px var(--y1),
+        4px -3px 0 -2px var(--y1),
+        4px 4px 0 -2px var(--y2),
+        -4px 4px 0 -2px var(--y2),
+        0 3px 5px rgba(0, 0, 0, 0.25);
+    }
+    .frame-window {
+      position: relative;
+      width: calc(var(--pw) * var(--fscale));
+      height: calc((var(--pw) + 42px) * var(--fscale));
+      background: var(--y3);
+      box-shadow: inset 0 2px 8px rgba(42, 29, 22, 0.25);
+      outline: 3px dashed var(--y1);
+      outline-offset: 4px;
+    }
+    .frame-empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      color: var(--y2);
+      font-size: calc(16px * var(--fscale) + 2px);
+      text-align: center;
+    }
+    .frame.filled .frame-empty { display: none; }
+    .flower {
+      position: absolute;
+      right: -6px;
+      bottom: -6px;
+      z-index: 2;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bud);
+      box-shadow:
+        0 -9px 0 1px var(--petal),
+        8.5px -3px 0 1px var(--petal),
+        5.5px 7.5px 0 1px var(--petal),
+        -5.5px 7.5px 0 1px var(--petal),
+        -8.5px -3px 0 1px var(--petal);
+    }
+    .polaroid.framed {
+      left: 0;
+      top: 0;
+      transform-origin: 0 0;
+      transform: scale(var(--fscale));
+      transition: none;
     }
     .sale .domain {
       display: block;
@@ -444,8 +574,20 @@
       .shutter.invite { animation: none; }
     }
 
+    @media (max-width: 1279px) {
+      .wall { --fscale: 0.78; gap: 24px; }
+    }
+    @media (max-width: 1000px) {
+      .wall { --fscale: 0.66; gap: 20px; }
+    }
+
     @media (max-width: 768px) {
       :root { --pw: 140px; }
+      .desk { gap: 10px; padding: 58px 16px 8px; }
+      .wall { --fscale: 0.6; gap: 16px; padding-top: 32px; }
+      .frame { padding: 10px; }
+      .hanger { top: -26px; height: 28px; }
+      .pompom { top: -32px; width: 14px; height: 14px; margin-left: -7px; }
       body { flex-direction: column-reverse; }
       .camera-zone {
         flex: 0 0 auto;
@@ -456,7 +598,6 @@
       .camera { width: min(250px, 62vw); }
       .hint { margin-bottom: 8px; font-size: 13px; }
       .cta { margin-top: 18px; padding: 10px 20px; font-size: 15px; }
-      .sale { top: 62px; }
       .sale h1 { font-size: clamp(22px, 6.4vw, 30px); }
       .sale .domain { font-size: clamp(13px, 4.6vw, 20px); }
       .sale .price { margin-top: 8px; font-size: clamp(17px, 4.8vw, 22px); }
@@ -501,6 +642,26 @@
       <p class="price"><strong>1000</strong> bowls of pho at Nga Ngo restaurant</p>
       <p class="dutch" lang="nl">Dit domein <span class="nowrap">thememorylabmaastricht.com</span> is <em>OOK</em> te koop:<br>1000 kommen pho bij restaurant Nga Ngo</p>
     </div>
+    <div class="wall">
+      <div class="frame">
+        <svg class="hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 40 L50 4 L96 40" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"/></svg>
+        <span class="pompom"></span>
+        <div class="frame-window"><span class="frame-empty">drop a photo here</span></div>
+        <span class="flower"></span>
+      </div>
+      <div class="frame">
+        <svg class="hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 40 L50 4 L96 40" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"/></svg>
+        <span class="pompom"></span>
+        <div class="frame-window"><span class="frame-empty">drop a photo here</span></div>
+        <span class="flower"></span>
+      </div>
+      <div class="frame">
+        <svg class="hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 40 L50 4 L96 40" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"/></svg>
+        <span class="pompom"></span>
+        <div class="frame-window"><span class="frame-empty">drop a photo here</span></div>
+        <span class="flower"></span>
+      </div>
+    </div>
   </main>
 
   <div class="flash" id="flash"></div>
@@ -511,7 +672,7 @@
     const shutter = document.getElementById('shutter');
     const slot = document.getElementById('slot');
     const flash = document.getElementById('flash');
-    const desk = document.getElementById('desk');
+    const frames = Array.from(document.querySelectorAll('.frame'));
     const resetBtn = document.getElementById('reset-btn');
     const downloadBtn = document.getElementById('download-btn');
 
@@ -526,30 +687,6 @@
     let topZ = 100;
     let audioCtx = null;
     let snapLocked = false;
-
-    const demoCards = [
-      {
-        card: { background: '#c8102e', color: '#fdfaf4', lines: [{ text: '1000', size: 150 }, { text: 'bowls of pho', size: 50 }] },
-        caption: 'the price',
-        top: 52,
-        left: 8,
-        rot: -8,
-      },
-      {
-        card: { background: '#f6ecdc', color: '#2a1d16', lines: [{ text: '🍜', size: 190 }, { text: 'Nga Ngo', size: 56 }] },
-        caption: 'pay here',
-        top: 47,
-        left: 36,
-        rot: 5,
-      },
-      {
-        card: { background: '#15100c', color: '#e0a526', lines: [{ text: 'ALSO', size: 130 }, { text: 'for sale', size: 70 }] },
-        caption: 'ook te koop!',
-        top: 56,
-        left: 62,
-        rot: -3,
-      },
-    ];
 
     function todayString() {
       const now = new Date();
@@ -630,16 +767,75 @@
       el.style.transform = `rotate(${degrees}deg) scale(${scale})`;
     }
 
+    function randomTilt() {
+      return Math.round(Math.random() * 18 - 9);
+    }
+
     function liftToBody(el) {
       if (el.parentElement === document.body) return;
       const rect = el.getBoundingClientRect();
       const left = rect.left + rect.width / 2 - el.offsetWidth / 2;
       const top = rect.top + rect.height / 2 - el.offsetHeight / 2;
-      el.classList.remove('ejecting');
+      const frame = el.closest('.frame');
+      if (frame) frame.classList.remove('filled');
+      el.classList.remove('ejecting', 'framed');
       document.body.appendChild(el);
       el.style.left = `${left}px`;
       el.style.top = `${top}px`;
       setRotation(el, Number(el.dataset.rot || 0));
+    }
+
+    function frameUnder(el) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      return frames.find((frame) => {
+        const box = frame.getBoundingClientRect();
+        return x >= box.left && x <= box.right && y >= box.top && y <= box.bottom;
+      }) || null;
+    }
+
+    function kickOut(el, frame) {
+      liftToBody(el);
+      const box = frame.getBoundingClientRect();
+      const left = Math.min(window.innerWidth - el.offsetWidth, Math.max(0, box.left + Math.random() * 80 - 40));
+      const top = Math.min(window.innerHeight - el.offsetHeight * 0.6, box.bottom - el.offsetHeight * 0.3);
+      el.style.left = `${left}px`;
+      el.style.top = `${top}px`;
+      el.style.zIndex = String(++topZ);
+      setRotation(el, randomTilt());
+    }
+
+    function mountInFrame(el, frame) {
+      const frameWindow = frame.querySelector('.frame-window');
+      const existing = frameWindow.querySelector('.polaroid');
+      if (existing && existing !== el) kickOut(existing, frame);
+      frameWindow.appendChild(el);
+      el.classList.add('framed', 'placed');
+      el.classList.remove('ejecting');
+      el.style.left = '';
+      el.style.top = '';
+      el.style.zIndex = '';
+      el.style.transform = '';
+      el.dataset.rot = '0';
+      frame.classList.add('filled');
+    }
+
+    function dropInFrame(el, frame) {
+      const first = el.getBoundingClientRect();
+      mountInFrame(el, frame);
+      const last = el.getBoundingClientRect();
+      el.animate(
+        [
+          { transform: `translate(${first.left - last.left}px, ${first.top - last.top}px) scale(${first.width / el.offsetWidth})` },
+          { transform: `scale(${last.width / el.offsetWidth})` },
+        ],
+        { duration: 320, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1.15)' }
+      );
+    }
+
+    function highlightFrame(target) {
+      frames.forEach((frame) => frame.classList.toggle('drop-target', frame === target));
     }
 
     function startDeveloping(el) {
@@ -697,6 +893,7 @@
           tilt = tilt * 0.7 + rawTilt * 0.3;
           lastX = moveEvent.clientX;
           setRotation(el, tilt, 1.06);
+          highlightFrame(frameUnder(el));
         };
 
         const onEnd = () => {
@@ -705,7 +902,13 @@
           el.removeEventListener('pointercancel', onEnd);
           el.classList.remove('dragging');
           el.classList.add('placed');
-          setRotation(el, Math.round(Math.random() * 18 - 9));
+          highlightFrame(null);
+          const target = frameUnder(el);
+          if (target) {
+            dropInFrame(el, target);
+            return;
+          }
+          setRotation(el, randomTilt());
         };
 
         el.addEventListener('pointermove', onMove);
@@ -737,18 +940,6 @@
       wireCaption(el.querySelector('.caption'));
       makeDraggable(el);
       return el;
-    }
-
-    async function spawnDemos() {
-      await document.fonts.load('48px "Permanent Marker"').catch(() => {});
-      for (const demo of demoCards) {
-        const el = createPolaroid(paintCard(demo.card), demo.caption);
-        el.style.top = `${demo.top}%`;
-        el.style.left = `${demo.left}%`;
-        el.classList.add('placed');
-        setRotation(el, demo.rot);
-        desk.appendChild(el);
-      }
     }
 
     function playShutterSound() {
@@ -850,7 +1041,7 @@
 
     function resetDesk() {
       document.querySelectorAll('.polaroid').forEach((el) => el.remove());
-      spawnDemos();
+      frames.forEach((frame) => frame.classList.remove('filled'));
     }
 
     shutter.addEventListener('click', snap);
@@ -863,7 +1054,6 @@
       snap();
     });
 
-    spawnDemos();
     startCamera();
   </script>
 </body>
