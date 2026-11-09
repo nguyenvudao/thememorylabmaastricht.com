@@ -13,7 +13,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
   <style>
     :root {
       --desk: #efe4d2;
@@ -567,9 +566,6 @@
     }
     .flash.on { opacity: 1; transition: none; }
 
-    .capturing .camera-zone,
-    .capturing .toolbar { visibility: hidden; }
-
     @media (prefers-reduced-motion: reduce) {
       .shutter.invite { animation: none; }
     }
@@ -682,6 +678,7 @@
     const SNAP_COOLDOWN_MS = 700;
     const UNDEVELOPED_FILTER = 'blur(12px) sepia(0.7) brightness(1.6) contrast(0.6)';
     const DEVELOPED_FILTER = 'blur(0px) sepia(0) brightness(1) contrast(1)';
+    const PRINT = { width: 1600, height: 1100, scale: 2, photoWidth: 300, frameGap: 70, textCenterY: 270, framesTop: 560 };
 
     const developAnimations = new WeakMap();
     let topZ = 100;
@@ -693,6 +690,10 @@
       const month = String(now.getMonth() + 1).padStart(2, '0');
       const day = String(now.getDate()).padStart(2, '0');
       return `${now.getFullYear()}/${month}/${day}`;
+    }
+
+    function markerFont(size) {
+      return `${size}px "Permanent Marker", "Apple Color Emoji", "Segoe UI Emoji", sans-serif`;
     }
 
     function newPhotoCanvas() {
@@ -723,7 +724,7 @@
       ctx.textBaseline = 'middle';
       let y = (PHOTO_SIZE - totalHeight) / 2;
       for (const line of lines) {
-        ctx.font = `${line.size}px "Permanent Marker", "Apple Color Emoji", "Segoe UI Emoji", sans-serif`;
+        ctx.font = markerFont(line.size);
         ctx.fillText(line.text, PHOTO_SIZE / 2, y + line.size / 2, PHOTO_SIZE - 40);
         y += line.size + gap;
       }
@@ -1023,20 +1024,248 @@
       }
     }
 
-    async function downloadCollage() {
-      if (!window.html2canvas) return;
-      document.body.classList.add('capturing');
-      try {
-        const canvas = await window.html2canvas(document.body, { backgroundColor: '#efe4d2', scale: 2, useCORS: true });
-        const link = document.createElement('a');
-        link.download = 'thememorylabmaastricht-pho-collage.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
-      } catch {
-        alert('Could not create the collage, please try again.');
-      } finally {
-        document.body.classList.remove('capturing');
+    function cssVar(el, name) {
+      return getComputedStyle(el).getPropertyValue(name).trim();
+    }
+
+    function rotationOf(el) {
+      const transform = getComputedStyle(el).transform;
+      if (!transform || transform === 'none') return 0;
+      const matrix = new DOMMatrixReadOnly(transform);
+      return Math.atan2(matrix.b, matrix.a);
+    }
+
+    function drawDot(ctx, { x, y, radius }) {
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawRichLine(ctx, { segments, y, size }) {
+      ctx.font = markerFont(size);
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      const widths = segments.map((segment) => ctx.measureText(segment.text).width);
+      let x = -widths.reduce((sum, width) => sum + width, 0) / 2;
+      segments.forEach((segment, index) => {
+        ctx.fillStyle = segment.color;
+        ctx.fillText(segment.text, x, y);
+        x += widths[index];
+      });
+    }
+
+    function drawDesk(ctx, palette) {
+      ctx.fillStyle = palette.desk;
+      ctx.fillRect(0, 0, PRINT.width, PRINT.height);
+      ctx.fillStyle = palette.dot;
+      const step = 26;
+      for (let y = 0; y <= PRINT.height + step; y += step) {
+        for (let x = 0; x <= PRINT.width + step; x += step) {
+          drawDot(ctx, { x, y, radius: 3.6 });
+          drawDot(ctx, { x: x + step / 2, y: y + step / 2, radius: 3.6 });
+        }
       }
+    }
+
+    function drawSaleText(ctx, palette) {
+      const lines = [
+        { y: -160, size: 64, segments: [{ text: 'This domain', color: palette.ink }] },
+        { y: -95, size: 40, segments: [{ text: 'thememorylabmaastricht.com', color: palette.muted }] },
+        { y: -25, size: 64, segments: [{ text: 'is ', color: palette.ink }, { text: 'ALSO', color: palette.red }, { text: ' for sale:', color: palette.ink }] },
+        { y: 55, size: 46, segments: [{ text: '1000', color: palette.red }, { text: ' bowls of pho at Nga Ngo restaurant', color: palette.ink }] },
+        { y: 120, size: 28, segments: [{ text: 'Dit domein thememorylabmaastricht.com is ', color: palette.muted }, { text: 'OOK', color: palette.red }, { text: ' te koop:', color: palette.muted }] },
+        { y: 160, size: 28, segments: [{ text: '1000 kommen pho bij restaurant Nga Ngo', color: palette.muted }] },
+      ];
+      ctx.save();
+      ctx.translate(PRINT.width / 2, PRINT.textCenterY);
+      ctx.rotate((-2 * Math.PI) / 180);
+      lines.forEach((line) => drawRichLine(ctx, line));
+      ctx.restore();
+    }
+
+    function knitPattern(ctx, { y1, y2 }, unit) {
+      const size = Math.round(12 * unit * PRINT.scale);
+      const tile = document.createElement('canvas');
+      tile.width = size;
+      tile.height = size;
+      const tileCtx = tile.getContext('2d');
+      tileCtx.fillStyle = y2;
+      tileCtx.fillRect(0, 0, size, size);
+      tileCtx.strokeStyle = y1;
+      tileCtx.lineWidth = size * 0.28;
+      tileCtx.lineCap = 'round';
+      tileCtx.lineJoin = 'round';
+      tileCtx.beginPath();
+      tileCtx.moveTo(size * 0.08, size * 0.2);
+      tileCtx.lineTo(size / 2, size * 0.72);
+      tileCtx.lineTo(size * 0.92, size * 0.2);
+      tileCtx.stroke();
+      const pattern = ctx.createPattern(tile, 'repeat');
+      pattern.setTransform(new DOMMatrix().scale(1 / PRINT.scale));
+      return pattern;
+    }
+
+    function drawScallops(ctx, { box, color, unit }) {
+      const radius = 6 * unit;
+      const across = Math.round(box.width / (12 * unit));
+      const down = Math.round(box.height / (12 * unit));
+      ctx.fillStyle = color;
+      for (let i = 0; i <= across; i++) {
+        const x = box.x + (box.width * i) / across;
+        drawDot(ctx, { x, y: box.y, radius });
+        drawDot(ctx, { x, y: box.y + box.height, radius });
+      }
+      for (let i = 0; i <= down; i++) {
+        const y = box.y + (box.height * i) / down;
+        drawDot(ctx, { x: box.x, y, radius });
+        drawDot(ctx, { x: box.x + box.width, y, radius });
+      }
+    }
+
+    function drawHanger(ctx, { box, colors, unit }) {
+      const apexY = box.y - 34 * unit;
+      const footY = box.y + 2 * unit;
+      const footInset = box.width * (0.15 + 0.04 * 0.7);
+      ctx.save();
+      ctx.strokeStyle = colors.y2;
+      ctx.lineWidth = 3 * unit;
+      ctx.setLineDash([4 * unit, 2 * unit]);
+      ctx.beginPath();
+      ctx.moveTo(box.x + footInset, footY);
+      ctx.lineTo(box.x + box.width / 2, apexY);
+      ctx.lineTo(box.x + box.width - footInset, footY);
+      ctx.stroke();
+      ctx.restore();
+
+      const radius = 10 * unit;
+      const centerX = box.x + box.width / 2;
+      const centerY = box.y - 36 * unit;
+      ctx.fillStyle = colors.y1;
+      for (let i = 0; i < 8; i++) {
+        const angle = (i / 8) * Math.PI * 2;
+        drawDot(ctx, { x: centerX + Math.cos(angle) * radius * 0.7, y: centerY + Math.sin(angle) * radius * 0.7, radius: radius * 0.45 });
+      }
+      const fluff = ctx.createRadialGradient(centerX - radius * 0.3, centerY - radius * 0.3, 0, centerX, centerY, radius);
+      fluff.addColorStop(0, colors.y3);
+      fluff.addColorStop(0.5, colors.y1);
+      fluff.addColorStop(1, colors.y2);
+      ctx.fillStyle = fluff;
+      drawDot(ctx, { x: centerX, y: centerY, radius });
+    }
+
+    function drawFlower(ctx, { x, y, colors, unit }) {
+      ctx.fillStyle = colors.petal;
+      for (let i = 0; i < 5; i++) {
+        const angle = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+        drawDot(ctx, { x: x + Math.cos(angle) * 9 * unit, y: y + Math.sin(angle) * 9 * unit, radius: 6.5 * unit });
+      }
+      ctx.fillStyle = colors.bud;
+      drawDot(ctx, { x, y, radius: 5.5 * unit });
+    }
+
+    function drawPolaroid(ctx, { photo, x, y, unit, palette }) {
+      ctx.fillStyle = palette.paper;
+      ctx.fillRect(x, y, 170 * unit, 212 * unit);
+      ctx.drawImage(photo.querySelector('img'), x + 10 * unit, y + 10 * unit, 150 * unit, 150 * unit);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = palette.ink;
+      ctx.font = markerFont(15 * unit);
+      ctx.fillText(photo.querySelector('.caption').textContent, x + 85 * unit, y + 181.5 * unit, 150 * unit);
+      ctx.fillStyle = palette.muted;
+      ctx.font = markerFont(10 * unit);
+      ctx.fillText(photo.querySelector('.date').textContent, x + 85 * unit, y + 199 * unit);
+    }
+
+    function drawFrame(ctx, { frame, centerX, palette }) {
+      const unit = PRINT.photoWidth / 170;
+      const border = 16 * unit;
+      const windowWidth = 170 * unit;
+      const windowHeight = 212 * unit;
+      const width = windowWidth + border * 2;
+      const height = windowHeight + border * 2;
+      const box = { x: -width / 2, y: -height / 2, width, height };
+      const colors = {
+        y1: cssVar(frame, '--y1'),
+        y2: cssVar(frame, '--y2'),
+        y3: cssVar(frame, '--y3'),
+        petal: cssVar(frame, '--petal'),
+        bud: cssVar(frame, '--bud'),
+      };
+
+      ctx.save();
+      ctx.translate(centerX, PRINT.framesTop + height / 2);
+      ctx.rotate(rotationOf(frame));
+      drawHanger(ctx, { box, colors, unit });
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(42, 29, 22, 0.35)';
+      ctx.shadowBlur = 24;
+      ctx.shadowOffsetY = 14;
+      ctx.fillStyle = colors.y2;
+      ctx.fillRect(box.x, box.y, width, height);
+      ctx.restore();
+
+      drawScallops(ctx, { box, color: colors.y2, unit });
+      ctx.fillStyle = knitPattern(ctx, colors, unit);
+      ctx.fillRect(box.x, box.y, width, height);
+
+      const windowX = box.x + border;
+      const windowY = box.y + border;
+      ctx.fillStyle = colors.y3;
+      ctx.fillRect(windowX, windowY, windowWidth, windowHeight);
+      ctx.save();
+      ctx.strokeStyle = colors.y1;
+      ctx.lineWidth = 3 * unit;
+      ctx.setLineDash([6 * unit, 4 * unit]);
+      const stitchOffset = 5.5 * unit;
+      ctx.strokeRect(windowX - stitchOffset, windowY - stitchOffset, windowWidth + stitchOffset * 2, windowHeight + stitchOffset * 2);
+      ctx.restore();
+
+      const photo = frame.querySelector('.frame-window .polaroid');
+      if (photo) drawPolaroid(ctx, { photo, x: windowX, y: windowY, unit, palette });
+
+      drawFlower(ctx, { x: box.x + width, y: box.y + height, colors, unit });
+      ctx.restore();
+    }
+
+    function renderPrint() {
+      const root = document.documentElement;
+      const palette = {
+        desk: cssVar(root, '--desk'),
+        dot: cssVar(root, '--dot'),
+        ink: cssVar(root, '--ink'),
+        muted: cssVar(root, '--muted'),
+        red: cssVar(root, '--red'),
+        paper: cssVar(root, '--paper'),
+      };
+      const canvas = document.createElement('canvas');
+      canvas.width = PRINT.width * PRINT.scale;
+      canvas.height = PRINT.height * PRINT.scale;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(PRINT.scale, PRINT.scale);
+
+      drawDesk(ctx, palette);
+      drawSaleText(ctx, palette);
+      const frameWidth = PRINT.photoWidth * (202 / 170);
+      frames.forEach((frame, index) => {
+        const centerX = PRINT.width / 2 + (index - 1) * (frameWidth + PRINT.frameGap);
+        drawFrame(ctx, { frame, centerX, palette });
+      });
+      ctx.fillStyle = palette.muted;
+      ctx.font = markerFont(24);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('thememorylabmaastricht.com · shot on PHO-CAM 1000', PRINT.width / 2, PRINT.height - 50);
+      return canvas;
+    }
+
+    async function downloadCollage() {
+      await document.fonts.load(markerFont(48)).catch(() => {});
+      const link = document.createElement('a');
+      link.download = 'thememorylabmaastricht-pho-wall.png';
+      link.href = renderPrint().toDataURL('image/png');
+      link.click();
     }
 
     function resetDesk() {
