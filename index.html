@@ -1461,7 +1461,7 @@
       if (!audioCtx || muted) return;
       const now = audioCtx.currentTime;
 
-      const clickLength = Math.floor(audioCtx.sampleRate * 0.12);
+      const clickLength = Math.floor(audioCtx.sampleRate * 0.06);
       const clickBuffer = audioCtx.createBuffer(1, clickLength, audioCtx.sampleRate);
       const samples = clickBuffer.getChannelData(0);
       for (let i = 0; i < clickLength; i++) samples[i] = (Math.random() * 2 - 1) * (1 - i / clickLength);
@@ -1469,10 +1469,10 @@
       click.buffer = clickBuffer;
       const clickFilter = audioCtx.createBiquadFilter();
       clickFilter.type = 'highpass';
-      clickFilter.frequency.value = 1800;
+      clickFilter.frequency.value = 2600;
       const clickGain = audioCtx.createGain();
-      clickGain.gain.setValueAtTime(0.5, now);
-      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      clickGain.gain.setValueAtTime(0.32, now);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
       click.connect(clickFilter).connect(clickGain).connect(audioCtx.destination);
       click.start(now);
 
@@ -1492,11 +1492,6 @@
       whirrGain.gain.exponentialRampToValueAtTime(0.22, now + 0.16);
       whirrGain.gain.setValueAtTime(0.22, now + 0.42);
       whirrGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.64);
-      const gears = audioCtx.createOscillator();
-      gears.type = 'square';
-      gears.frequency.value = 28;
-      const gearDepth = audioCtx.createGain();
-      gearDepth.gain.value = 0.07;
       const servo = audioCtx.createOscillator();
       servo.type = 'sine';
       servo.frequency.setValueAtTime(950, now + 0.1);
@@ -1506,12 +1501,9 @@
       servoGain.gain.exponentialRampToValueAtTime(0.03, now + 0.2);
       servoGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
       whirr.connect(whirrFilter).connect(whirrGain).connect(audioCtx.destination);
-      gears.connect(gearDepth).connect(whirrGain.gain);
       servo.connect(servoGain).connect(audioCtx.destination);
       whirr.start(now + 0.1);
       whirr.stop(now + 0.68);
-      gears.start(now + 0.1);
-      gears.stop(now + 0.68);
       servo.start(now + 0.1);
       servo.stop(now + 0.68);
     }
