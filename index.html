@@ -112,8 +112,7 @@
       height: 18%;
       z-index: 19;
       border-radius: 22px 22px 0 0;
-      background: linear-gradient(165deg, #f5f7f8 0%, #ccd4d8 34%, #98a3a9 68%, #6d777d 100%);
-      box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.85), inset 0 -4px 7px rgba(0, 0, 0, 0.28);
+      background: linear-gradient(#3d2c22, var(--ink));
     }
     .camera-top::after {
       content: "";
@@ -123,7 +122,7 @@
       right: 10%;
       height: 6px;
       border-radius: 3px;
-      background: #14100c;
+      background: #0e0906;
       box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
     }
     .camera-body {
@@ -134,32 +133,19 @@
       bottom: 0;
       z-index: 20;
       border-radius: 30px;
-      background: linear-gradient(180deg, #eef1f3 0%, #c6ced3 18%, #93a0a6 30%, #7d5230 30.4%, #6a4226 62%, #4a2c18 100%);
+      background: linear-gradient(160deg, #fcf5e8 0%, var(--cam) 45%, var(--cam-shade) 100%);
       box-shadow:
-        0 26px 40px -14px rgba(42, 29, 22, 0.55),
-        inset 0 -7px 0 rgba(0, 0, 0, 0.25),
-        inset 0 2px 0 rgba(255, 255, 255, 0.6);
-    }
-    .camera-body::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 33%;
-      bottom: 0;
-      border-radius: 0 0 28px 28px;
-      background:
-        repeating-linear-gradient(35deg, rgba(0, 0, 0, 0.14) 0 1px, transparent 1px 3px),
-        repeating-linear-gradient(-35deg, rgba(255, 255, 255, 0.06) 0 1px, transparent 1px 3px);
-      pointer-events: none;
+        0 26px 40px -14px rgba(42, 29, 22, 0.5),
+        inset 0 -7px 0 rgba(0, 0, 0, 0.08),
+        inset 0 2px 0 #fff;
     }
     .stripe {
       position: absolute;
       left: 0;
       right: 0;
-      top: 29%;
-      height: 2.5%;
-      background: linear-gradient(#2c1c10, #6b4a2e 45%, #d9c3a4 60%, #3a2415);
+      top: 44%;
+      height: 12%;
+      background: linear-gradient(var(--red) 0 55%, var(--gold) 55% 100%);
     }
     .flash-window {
       position: absolute;
@@ -168,8 +154,8 @@
       width: 17%;
       height: 22%;
       border-radius: 8px;
-      background: linear-gradient(135deg, #4a5156 0%, #23272a 55%, #101214 100%);
-      box-shadow: inset 0 0 0 3px #d7dee2, inset 0 0 10px rgba(0, 0, 0, 0.65);
+      background: linear-gradient(135deg, #fff 0%, #e4eaed 40%, #b6c0c6 100%);
+      box-shadow: inset 0 0 0 3px var(--ink), inset 0 0 10px rgba(0, 0, 0, 0.3);
       transition: box-shadow 0.28s ease, background 0.28s ease;
     }
     .flash-window .burst {
@@ -200,10 +186,10 @@
       content: "❤";
       position: absolute;
       left: 9%;
-      top: 55%;
+      top: 35%;
       font-size: 15px;
-      color: #e2604f;
-      opacity: 0.9;
+      color: var(--red);
+      opacity: 0.85;
       transform: rotate(-10deg);
     }
     .viewfinder {
@@ -214,7 +200,7 @@
       height: 16%;
       border-radius: 6px;
       background: radial-gradient(circle at 35% 35%, #5d6d75, #0b0d0e 70%);
-      box-shadow: inset 0 0 0 3px #cfd6da;
+      box-shadow: inset 0 0 0 3px var(--ink);
     }
     .lens {
       position: absolute;
@@ -226,7 +212,7 @@
       display: grid;
       place-items: center;
       border-radius: 50%;
-      background: radial-gradient(circle, #2b2422 0 54%, #0e0c0b 55% 59%, #e8edf0 60% 67%, #8d989e 68% 75%, #31383c 76% 100%);
+      background: radial-gradient(circle, #4a3a30 0 58%, #18110c 59% 66%, #3d2e25 67% 74%, #100b07 75% 100%);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
     }
     .lens-glass {
@@ -288,8 +274,8 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 11px;
-      color: #f2e3cd;
-      opacity: 0.85;
+      color: var(--ink);
+      opacity: 0.7;
     }
     .shutter:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--red-dark), 0 3px 6px rgba(0, 0, 0, 0.3); }
     .shutter.invite { animation: invite 1.6s ease-out infinite; }
@@ -302,10 +288,8 @@
       right: 8%;
       bottom: 8%;
       font-size: clamp(11px, 2.6vw, 15px);
-      letter-spacing: 0.08em;
-      color: #f2e3cd;
-      opacity: 0.85;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+      letter-spacing: 0.06em;
+      opacity: 0.75;
     }
     .cta {
       display: inline-flex;
