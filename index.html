@@ -1476,36 +1476,19 @@
       click.connect(clickFilter).connect(clickGain).connect(audioCtx.destination);
       click.start(now);
 
-      const whirrLength = Math.floor(audioCtx.sampleRate * 0.55);
-      const whirrBuffer = audioCtx.createBuffer(1, whirrLength, audioCtx.sampleRate);
-      const whirrSamples = whirrBuffer.getChannelData(0);
-      for (let i = 0; i < whirrLength; i += 1) whirrSamples[i] = Math.random() * 2 - 1;
-      const whirr = audioCtx.createBufferSource();
-      whirr.buffer = whirrBuffer;
-      const whirrFilter = audioCtx.createBiquadFilter();
-      whirrFilter.type = 'bandpass';
-      whirrFilter.frequency.setValueAtTime(1900, now + 0.1);
-      whirrFilter.frequency.exponentialRampToValueAtTime(3400, now + 0.6);
-      whirrFilter.Q.value = 1.1;
-      const whirrGain = audioCtx.createGain();
-      whirrGain.gain.setValueAtTime(0.0001, now + 0.1);
-      whirrGain.gain.exponentialRampToValueAtTime(0.22, now + 0.16);
-      whirrGain.gain.setValueAtTime(0.22, now + 0.42);
-      whirrGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.64);
-      const servo = audioCtx.createOscillator();
-      servo.type = 'sine';
-      servo.frequency.setValueAtTime(950, now + 0.1);
-      servo.frequency.linearRampToValueAtTime(1550, now + 0.58);
-      const servoGain = audioCtx.createGain();
-      servoGain.gain.setValueAtTime(0.0001, now + 0.1);
-      servoGain.gain.exponentialRampToValueAtTime(0.03, now + 0.2);
-      servoGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
-      whirr.connect(whirrFilter).connect(whirrGain).connect(audioCtx.destination);
-      servo.connect(servoGain).connect(audioCtx.destination);
-      whirr.start(now + 0.1);
-      whirr.stop(now + 0.68);
-      servo.start(now + 0.1);
-      servo.stop(now + 0.68);
+      [[820, 1450], [1230, 2175]].forEach(([from, to]) => {
+        const osc = audioCtx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(from, now + 0.08);
+        osc.frequency.exponentialRampToValueAtTime(to, now + 0.42);
+        const gain = audioCtx.createGain();
+        gain.gain.setValueAtTime(0.0001, now + 0.08);
+        gain.gain.exponentialRampToValueAtTime(0.035, now + 0.14);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start(now + 0.08);
+        osc.stop(now + 0.52);
+      });
     }
 
     function fireFlash() {
