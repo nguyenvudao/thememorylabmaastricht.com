@@ -1135,6 +1135,7 @@
     const CAPTION_MAX = 18;
     const NOTE_MAX = 60;
     const SNAP_COOLDOWN_MS = 700;
+    const MAX_PRINTS = 10;
     const CAMERA_WAIT_MS = 2500;
     const STORE_KEY = 'pho-wall-v1';
     const UNDEVELOPED_FILTER = 'blur(12px) sepia(0.7) brightness(1.6) contrast(0.6)';
@@ -1651,8 +1652,18 @@
       countdownEl.textContent = '';
     }
 
+    function printTotal() {
+      return document.querySelectorAll('.polaroid').length;
+    }
+
+    function deskFull() {
+      if (printTotal() < MAX_PRINTS) return false;
+      showToast(`Desk full — ${MAX_PRINTS} prints max. Remove one or RESET`);
+      return true;
+    }
+
     async function snap() {
-      if (snapLocked) return;
+      if (snapLocked || deskFull()) return;
       snapLocked = true;
       unlockAudio();
       shutter.classList.remove('invite');
@@ -2103,7 +2114,7 @@
     }
 
     function syncDesk() {
-      printCount.textContent = `${document.querySelectorAll('.polaroid').length} / 1000 🍜`;
+      printCount.textContent = `${printTotal()} / ${MAX_PRINTS} 🍜`;
       const complete = frames.every((frame) => frame.classList.contains('filled'));
       if (complete && !celebrated) {
         const wall = document.querySelector('.wall');
@@ -2139,6 +2150,7 @@
     }
 
     function addPrintAt(src, x, y) {
+      if (printTotal() >= MAX_PRINTS) return null;
       const el = createPolaroid(src);
       el.classList.add('placed');
       stage.appendChild(el);
@@ -2187,7 +2199,10 @@
           continue;
         }
         const spot = point || { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-        addPrintAt(src, spot.x + added * 44, spot.y + added * 34);
+        if (!addPrintAt(src, spot.x + added * 44, spot.y + added * 34)) {
+          deskFull();
+          break;
+        }
         added += 1;
       }
       if (added) showToast(added === 1 ? 'Photo added to the desk' : `${added} photos added to the desk`);
