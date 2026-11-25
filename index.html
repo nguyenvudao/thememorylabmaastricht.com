@@ -1586,7 +1586,8 @@
         osc.connect(filter).connect(gain).connect(audioCtx.destination);
         osc.start(now + 0.08);
         osc.stop(now + 0.52);
-        noiseAt(now + 0.08, 1500, 0.06, 0.32);
+        toneAt(now + 0.08, 340, { type: 'triangle', to: 480, peak: 0.035, attack: 0.05, length: 0.42 });
+        toneAt(now + 0.08, 620, { type: 'triangle', to: 900, peak: 0.018, attack: 0.05, length: 0.4 });
         noiseAt(now + 0.5, 2200, 0.2, 0.03);
         return;
       }
