@@ -156,6 +156,41 @@
       border-radius: 8px;
       background: linear-gradient(135deg, #fff 0%, #e4eaed 40%, #b6c0c6 100%);
       box-shadow: inset 0 0 0 3px var(--ink), inset 0 0 10px rgba(0, 0, 0, 0.3);
+      transition: box-shadow 0.28s ease, background 0.28s ease;
+    }
+    .flash-window .burst {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      font-size: 34px;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .flash-window.bursting {
+      background: #fff;
+      box-shadow:
+        inset 0 0 0 3px var(--ink),
+        0 0 24px 9px rgba(255, 255, 255, 0.95),
+        0 0 58px 22px rgba(255, 240, 190, 0.75);
+    }
+    .flash-window.bursting .burst { opacity: 1; }
+    @media (prefers-reduced-motion: no-preference) {
+      .flash-window .burst { transform: translate(-50%, -50%) scale(0.35); transition: opacity 0.25s ease, transform 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.6); }
+      .flash-window.bursting .burst { transform: translate(-50%, -50%) scale(1.2) rotate(-14deg); }
+      .pompom { transition: transform 0.25s ease; }
+      .frame:hover .pompom { transform: rotate(14deg) scale(1.14); }
+    }
+    .camera-body::after {
+      content: "❤";
+      position: absolute;
+      left: 9%;
+      top: 35%;
+      font-size: 15px;
+      color: var(--red);
+      opacity: 0.85;
+      transform: rotate(-10deg);
     }
     .viewfinder {
       position: absolute;
@@ -861,6 +896,7 @@
       margin: -8px 0 14px;
     }
     .camera-extras .add-photo { margin: 0; }
+    .print-count { margin: 12px 0 0; font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
     .frame { cursor: pointer; }
 
     .rain {
@@ -940,17 +976,18 @@
   <div class="drop-hint" id="drop-hint" aria-hidden="true">drop your photos here 📸</div>
 
   <section class="camera-zone">
-    <p class="hint">Press the red button 📸<small>photos never leave your browser</small></p>
+    <p class="hint">Press the red button &amp; say pho! 📸<small>photos never leave your browser</small></p>
     <div class="camera-extras">
       <button class="add-photo" id="add-btn" type="button">+ add photos from your device</button>
       <button class="add-photo" id="film-btn" type="button" title="Change the film look">🎞 film: PHO</button>
+      <button class="add-photo" id="pun-btn" type="button" title="Write a pho pun on the newest print">💬 caption idea</button>
     </div>
     <div class="camera">
       <div class="slot" id="slot"></div>
       <div class="camera-top"></div>
       <div class="camera-body">
         <div class="stripe"></div>
-        <div class="flash-window"></div>
+        <div class="flash-window" id="flash-window"><span class="burst" aria-hidden="true">✨</span></div>
         <div class="viewfinder"></div>
         <div class="lens" id="lens">
           <div class="lens-glass">
@@ -964,6 +1001,7 @@
       </div>
     </div>
     <a class="cta" href="https://thememorylabmaastricht.nl">Click here · Klik hier <span aria-hidden="true">→</span></a>
+    <p class="print-count" id="print-count">0 / 1000 🍜</p>
   </section>
 
   <main class="desk" id="desk">
@@ -1004,7 +1042,8 @@
       <h2 id="help-title">How to use your PHO-CAM</h2>
       <ul>
         <li><b>SNAP</b> — or press <kbd>Space</kbd> — takes a photo. <b>⏱ 3s</b> gives you time to pose.</li>
-        <li><b>🎞 film</b> switches the look: PHO, 1975, B&amp;W, VIVID.</li>
+        <li><b>🎞 film</b> recolours your next shots: PHO (warm), 1975 (faded), B&amp;W, VIVID.</li>
+        <li><b>💬 caption idea</b> writes a pho pun on the newest print.</li>
         <li><b>Drag</b> a print into a frame, or simply <b>tap the frame</b>.</li>
         <li><b>Write</b> on the caption. Flip <b>↻</b> for a note on the back.</li>
         <li><b>Double-click</b> a print to zoom in and save it on its own.</li>
@@ -1038,6 +1077,7 @@
     const shutter = document.getElementById('shutter');
     const slot = document.getElementById('slot');
     const flash = document.getElementById('flash');
+    const flashWindow = document.getElementById('flash-window');
     const stage = document.getElementById('stage');
     const frames = Array.from(document.querySelectorAll('.frame'));
     const resetBtn = document.getElementById('reset-btn');
@@ -1060,6 +1100,8 @@
     const zoomDate = document.getElementById('zoom-date');
     const zoomClose = document.getElementById('zoom-close');
     const zoomSave = document.getElementById('zoom-save');
+    const punBtn = document.getElementById('pun-btn');
+    const printCount = document.getElementById('print-count');
     const toast = document.getElementById('toast');
     const toastText = document.getElementById('toast-text');
     const toastAction = document.getElementById('toast-action');
@@ -1075,10 +1117,10 @@
     const DEVELOPED_FILTER = 'blur(0px) sepia(0) brightness(1) contrast(1)';
     const PRINT = { width: 1600, height: 1100, scale: 2, photoWidth: 300, frameGap: 70, textCenterY: 270, framesTop: 560 };
     const FILMS = [
-      { name: 'PHO', filter: 'contrast(1.1) saturate(1.2) sepia(0.15)' },
-      { name: '1975', filter: 'contrast(0.92) saturate(0.72) sepia(0.45) brightness(1.06)' },
-      { name: 'B&W', filter: 'grayscale(1) contrast(1.18)' },
-      { name: 'VIVID', filter: 'contrast(1.16) saturate(1.65)' },
+      { name: 'PHO', filter: 'contrast(1.1) saturate(1.2) sepia(0.15)', hint: 'warm instant look' },
+      { name: '1975', filter: 'contrast(0.92) saturate(0.72) sepia(0.45) brightness(1.06)', hint: 'faded vintage colours' },
+      { name: 'B&W', filter: 'grayscale(1) contrast(1.18)', hint: 'black and white' },
+      { name: 'VIVID', filter: 'contrast(1.16) saturate(1.65)', hint: 'punchy colours' },
     ];
     const YARNS = [
       { y1: '#f7b6c6', y2: '#e8899f', y3: '#fff4f6', petal: '#fffaf4', bud: '#f6c445' },
@@ -1089,6 +1131,11 @@
       { y1: '#f6b48f', y2: '#dd8f66', y3: '#fff3ec', petal: '#fffaf4', bud: '#8fb385' },
     ];
     const RAIN_DROPS = ['🍜', '🍜', '🍜', '🌶️', '🥢', '🌿', '🍋'];
+    const PUNS = [
+      'pho real?', '1000 bowls pls', 'soup-er model', 'no pho, no life',
+      'Nga Ngo or nothing', 'you had me at pho', 'pho-get about it', 'slurp life',
+      'bowl goals', 'send noods', 'pho sho', 'just one more bowl',
+    ];
 
     const developAnimations = new WeakMap();
     let topZ = 100;
@@ -1106,6 +1153,7 @@
     let filmIndex = 0;
     let zoomedCard = null;
     let typedWord = '';
+    let lastPun = -1;
     try {
       muted = localStorage.getItem('pho-muted') === '1';
     } catch {
@@ -1215,7 +1263,7 @@
       el.style.left = `${left}px`;
       el.style.top = `${top}px`;
       setRotation(el, Number(el.dataset.rot || 0));
-      updateCelebration();
+      syncDesk();
     }
 
     function frameUnder(el) {
@@ -1289,7 +1337,7 @@
       el.style.transform = '';
       el.dataset.rot = '0';
       frame.classList.add('filled');
-      updateCelebration();
+      syncDesk();
     }
 
     function dropInFrame(el, frame) {
@@ -1471,7 +1519,7 @@
       clickFilter.type = 'highpass';
       clickFilter.frequency.value = 2600;
       const clickGain = audioCtx.createGain();
-      clickGain.gain.setValueAtTime(0.32, now);
+      clickGain.gain.setValueAtTime(0.38, now);
       clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
       click.connect(clickFilter).connect(clickGain).connect(audioCtx.destination);
       click.start(now);
@@ -1483,15 +1531,17 @@
         osc.frequency.exponentialRampToValueAtTime(to, now + 0.42);
         const gain = audioCtx.createGain();
         gain.gain.setValueAtTime(0.0001, now + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.035, now + 0.14);
-        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+        gain.gain.exponentialRampToValueAtTime(0.09, now + 0.14);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
         osc.connect(gain).connect(audioCtx.destination);
         osc.start(now + 0.08);
-        osc.stop(now + 0.52);
+        osc.stop(now + 0.64);
       });
     }
 
     function fireFlash() {
+      flashWindow.classList.add('bursting');
+      setTimeout(() => flashWindow.classList.remove('bursting'), reducedMotion.matches ? 380 : 170);
       if (reducedMotion.matches) return;
       const clear = () => flash.classList.remove('on');
       flash.classList.add('on');
@@ -1510,6 +1560,7 @@
       el.classList.add('ejecting');
       slot.appendChild(el);
       startDeveloping(el);
+      syncDesk();
       scheduleSave();
     }
 
@@ -1525,6 +1576,7 @@
     async function snap() {
       if (snapLocked) return;
       snapLocked = true;
+      unlockAudio();
       shutter.classList.remove('invite');
       if (timerSeconds) await runCountdown(timerSeconds);
       if (!video.videoWidth) {
@@ -1930,7 +1982,7 @@
         }
       });
       restoring = false;
-      updateCelebration();
+      syncDesk();
     }
 
     function placeInFrame(frame) {
@@ -1952,7 +2004,7 @@
       cards.forEach((card) => card.remove());
       frames.forEach((frame) => frame.classList.remove('filled'));
       saveState();
-      updateCelebration();
+      syncDesk();
       showToast('Desk cleared', 'UNDO', undoReset);
     }
 
@@ -1969,10 +2021,11 @@
       resetSnapshot = null;
       hideToast();
       saveState();
-      updateCelebration();
+      syncDesk();
     }
 
-    function updateCelebration() {
+    function syncDesk() {
+      printCount.textContent = `${document.querySelectorAll('.polaroid').length} / 1000 🍜`;
       const complete = frames.every((frame) => frame.classList.contains('filled'));
       if (complete && !celebrated) {
         const wall = document.querySelector('.wall');
@@ -1993,7 +2046,7 @@
       el.remove();
       if (frame) frame.classList.remove('filled');
       saveState();
-      updateCelebration();
+      syncDesk();
       showToast('Photo removed', 'UNDO', () => {
         if (frameIndex >= 0) {
           frames[frameIndex].querySelector('.frame-window').appendChild(el);
@@ -2003,7 +2056,7 @@
         }
         hideToast();
         saveState();
-        updateCelebration();
+        syncDesk();
       });
     }
 
@@ -2017,6 +2070,7 @@
       el.style.left = `${Math.round(left)}px`;
       el.style.top = `${Math.round(top)}px`;
       setRotation(el, randomTilt());
+      syncDesk();
       scheduleSave();
       return el;
     }
@@ -2148,7 +2202,22 @@
     function cycleFilm() {
       filmIndex = (filmIndex + 1) % FILMS.length;
       filmBtn.textContent = `🎞 film: ${FILMS[filmIndex].name}`;
-      showToast(`Film: ${FILMS[filmIndex].name}`);
+      showToast(`Film: ${FILMS[filmIndex].name} — ${FILMS[filmIndex].hint} (next shots)`);
+    }
+
+    function punCaption() {
+      const [loose] = looseCards().sort((a, b) => Number(b.style.zIndex || 0) - Number(a.style.zIndex || 0));
+      const target = loose || document.querySelector('.frame .polaroid');
+      if (!target) {
+        showToast('Snap a photo first, then ask for a caption');
+        return;
+      }
+      let index = Math.floor(Math.random() * PUNS.length);
+      if (index === lastPun) index = (index + 1) % PUNS.length;
+      lastPun = index;
+      target.querySelector('.caption').textContent = PUNS[index];
+      scheduleSave();
+      showToast(`“${PUNS[index]}”`);
     }
 
     function reyarn(frame) {
@@ -2247,6 +2316,7 @@
     soundBtn.addEventListener('click', toggleSound);
     timerBtn.addEventListener('click', toggleTimer);
     filmBtn.addEventListener('click', cycleFilm);
+    punBtn.addEventListener('click', punCaption);
     helpBtn.addEventListener('click', openHelp);
     helpClose.addEventListener('click', closeHelp);
     help.addEventListener('click', (event) => {
@@ -2310,7 +2380,7 @@
 
     renderSoundButton();
     restoreState();
-    updateCelebration();
+    syncDesk();
   </script>
 </body>
 </html>
