@@ -1055,7 +1055,7 @@
       <h2 id="help-title">How to use your PHO-CAM</h2>
       <ul>
         <li><b>SNAP</b> — or press <kbd>Space</kbd> — takes a photo. <b>⏱ 3s</b> gives you time to pose.</li>
-        <li><b>🎞 film</b> recolours your next shots: PHO (warm), 1975 (faded), B&amp;W, VIVID.</li>
+        <li><b>🎞 film</b> recolours your next shots — 8 looks: PHO, 1975, 1962, SEPIA, KODAK, POLA 600, B&amp;W, VIVID.</li>
         <li><b>💬 caption idea</b> writes a pho pun on the newest print.</li>
         <li><b>Drag</b> a print into a frame, or simply <b>tap the frame</b>.</li>
         <li><b>Write</b> on the caption. Flip <b>↻</b> for a note on the back.</li>
@@ -1144,6 +1144,10 @@
     const FILMS = [
       { name: 'PHO', filter: 'contrast(1.1) saturate(1.2) sepia(0.15)', hint: 'warm instant look' },
       { name: '1975', filter: 'contrast(0.92) saturate(0.72) sepia(0.45) brightness(1.06)', hint: 'faded vintage colours' },
+      { name: '1962', filter: 'contrast(0.9) saturate(0.6) sepia(0.35) hue-rotate(-12deg) brightness(1.08)', hint: 'sixties colour slide, green shadows' },
+      { name: 'SEPIA', filter: 'sepia(0.85) contrast(1.05) brightness(1.02)', hint: 'old brown photo paper' },
+      { name: 'KODAK', filter: 'contrast(1.05) saturate(1.25) sepia(0.28) hue-rotate(-8deg)', hint: 'warm gold film colours' },
+      { name: 'POLA 600', filter: 'contrast(0.95) saturate(0.9) sepia(0.22) brightness(1.1)', hint: 'washed-out instant colours' },
       { name: 'B&W', filter: 'grayscale(1) contrast(1.18)', hint: 'black and white' },
       { name: 'VIVID', filter: 'contrast(1.16) saturate(1.65)', hint: 'punchy colours' },
     ];
@@ -1160,6 +1164,10 @@
       'pho real?', '1000 bowls pls', 'soup-er model', 'no pho, no life',
       'Nga Ngo or nothing', 'you had me at pho', 'pho-get about it', 'slurp life',
       'bowl goals', 'send noods', 'pho sho', 'just one more bowl',
+      'vintage but make it pho', 'est. 1975', 'developed in fish sauce',
+      'grain today, gone tomorrow', 'old soul, hot broth', 'pho-nostalgia',
+      'retro slurp', 'shot on pho-laroid', 'analog appetite',
+      'born in the wrong broth', 'vintage vibes only', 'film never dies',
     ];
 
     const developAnimations = new WeakMap();
