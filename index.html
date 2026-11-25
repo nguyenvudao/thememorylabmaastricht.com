@@ -1,0 +1,2341 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>thememorylabmaastricht.com is also for sale</title>
+  <meta name="description" content="This domain thememorylabmaastricht.com is ALSO for sale: 1000 bowls of pho at Nga Ngo restaurant. Snap a photo while you think about it.">
+  <meta property="og:title" content="thememorylabmaastricht.com is ALSO for sale">
+  <meta property="og:description" content="1000 bowls of pho at Nga Ngo restaurant.">
+  <meta property="og:url" content="https://thememorylabmaastricht.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="thememorylabmaastricht.com">
+  <meta property="og:image" content="https://thememorylabmaastricht.com/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Three crochet picture frames on a dotted desk with instant photos, above the words: this domain is also for sale, 1000 bowls of pho at Nga Ngo restaurant.">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="nl_NL">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://thememorylabmaastricht.com/">
+  <meta name="theme-color" content="#efe4d2">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📸</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --desk: #efe4d2;
+      --dot: #e3d3b9;
+      --ink: #2a1d16;
+      --muted: #8a7565;
+      --red: #c8102e;
+      --red-dark: #9e0c24;
+      --gold: #e0a526;
+      --paper: #fdfaf4;
+      --cam: #f3e9d7;
+      --cam-shade: #d9c6a8;
+      --pw: 170px;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      display: flex;
+      background-color: var(--desk);
+      background-image:
+        radial-gradient(var(--dot) 15%, transparent 16%),
+        radial-gradient(var(--dot) 15%, transparent 16%);
+      background-size: 22px 22px;
+      background-position: 0 0, 11px 11px;
+      color: var(--ink);
+      font-family: "Permanent Marker", cursive;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+    }
+
+    .stage {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .stage .polaroid { pointer-events: auto; }
+
+    .camera-zone {
+      position: relative;
+      z-index: 20;
+      flex: 0 0 46%;
+      max-width: 560px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 20px 20px 36px;
+    }
+    .hint {
+      margin: 0 0 18px;
+      font-size: 15px;
+      color: var(--muted);
+      text-align: center;
+      transform: rotate(-3deg);
+    }
+    .hint small { display: block; font-size: 11px; opacity: 0.8; }
+    .camera {
+      position: relative;
+      width: min(380px, 100%);
+      aspect-ratio: 1 / 0.82;
+    }
+    .slot {
+      position: absolute;
+      left: 50%;
+      bottom: 88.5%;
+      z-index: 15;
+      width: var(--pw);
+      transform: translateX(-50%);
+      display: flex;
+      align-items: flex-end;
+      pointer-events: none;
+    }
+    .slot .polaroid { position: relative; pointer-events: auto; }
+    .camera-top {
+      position: absolute;
+      top: 8%;
+      left: 18%;
+      right: 18%;
+      height: 18%;
+      z-index: 19;
+      border-radius: 22px 22px 0 0;
+      background: linear-gradient(#3d2c22, var(--ink));
+    }
+    .camera-top::after {
+      content: "";
+      position: absolute;
+      top: 16%;
+      left: 10%;
+      right: 10%;
+      height: 6px;
+      border-radius: 3px;
+      background: #0e0906;
+      box-shadow: inset 0 2px 3px rgba(0, 0, 0, 0.8);
+    }
+    .camera-body {
+      position: absolute;
+      top: 24%;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 20;
+      border-radius: 30px;
+      background: linear-gradient(160deg, #fcf5e8 0%, var(--cam) 45%, var(--cam-shade) 100%);
+      box-shadow:
+        0 26px 40px -14px rgba(42, 29, 22, 0.5),
+        inset 0 -7px 0 rgba(0, 0, 0, 0.08),
+        inset 0 2px 0 #fff;
+    }
+    .stripe {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 44%;
+      height: 12%;
+      background: linear-gradient(var(--red) 0 55%, var(--gold) 55% 100%);
+    }
+    .flash-window {
+      position: absolute;
+      top: 9%;
+      left: 7%;
+      width: 17%;
+      height: 22%;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #fff 0%, #e4eaed 40%, #b6c0c6 100%);
+      box-shadow: inset 0 0 0 3px var(--ink), inset 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .viewfinder {
+      position: absolute;
+      top: 10%;
+      right: 8%;
+      width: 12%;
+      height: 16%;
+      border-radius: 6px;
+      background: radial-gradient(circle at 35% 35%, #5d6d75, #0b0d0e 70%);
+      box-shadow: inset 0 0 0 3px var(--ink);
+    }
+    .lens {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 46%;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: radial-gradient(circle, #4a3a30 0 58%, #18110c 59% 66%, #3d2e25 67% 74%, #100b07 75% 100%);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+    }
+    .lens-glass {
+      position: relative;
+      width: 58%;
+      aspect-ratio: 1;
+      overflow: hidden;
+      border-radius: 50%;
+      background: #000;
+      box-shadow: inset 0 0 14px #000;
+    }
+    .lens-glass video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+      opacity: 0.92;
+    }
+    .lens-glass::after {
+      content: "";
+      position: absolute;
+      top: 12%;
+      left: 16%;
+      width: 34%;
+      height: 20%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.35);
+      transform: rotate(-35deg);
+      filter: blur(2px);
+    }
+    .lens-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      font-size: clamp(24px, 6vw, 46px);
+      background: radial-gradient(circle, #3a2a20, #000);
+    }
+    .lens.no-cam .lens-fallback { display: grid; }
+    .shutter {
+      position: absolute;
+      left: 8%;
+      bottom: 16%;
+      width: 13%;
+      aspect-ratio: 1;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff4d63, var(--red) 60%, var(--red-dark));
+      box-shadow: 0 5px 0 var(--red-dark), 0 8px 14px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.08s, box-shadow 0.08s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .shutter::after {
+      content: "SNAP";
+      position: absolute;
+      top: 118%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 11px;
+      color: var(--ink);
+      opacity: 0.7;
+    }
+    .shutter:active { transform: translateY(4px); box-shadow: 0 1px 0 var(--red-dark), 0 3px 6px rgba(0, 0, 0, 0.3); }
+    .shutter.invite { animation: invite 1.6s ease-out infinite; }
+    @keyframes invite {
+      0% { box-shadow: 0 5px 0 var(--red-dark), 0 0 0 0 rgba(200, 16, 46, 0.55); }
+      100% { box-shadow: 0 5px 0 var(--red-dark), 0 0 0 16px rgba(200, 16, 46, 0); }
+    }
+    .brand {
+      position: absolute;
+      right: 8%;
+      bottom: 8%;
+      font-size: clamp(11px, 2.6vw, 15px);
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: var(--red);
+      color: #fff;
+      font-size: 17px;
+      text-decoration: none;
+      box-shadow: 0 6px 0 var(--red-dark), 0 14px 24px -8px rgba(200, 16, 46, 0.6);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .cta:hover { transform: translateY(-2px); }
+    .cta:active { transform: translateY(4px); box-shadow: 0 2px 0 var(--red-dark); }
+
+    .desk {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 26px;
+      padding: 72px 24px 24px;
+    }
+    .sale {
+      width: min(100%, 720px);
+      transform: rotate(-2deg);
+      text-align: center;
+      pointer-events: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .sale h1 {
+      margin: 0;
+      font-weight: 400;
+      font-size: clamp(24px, 3vw, 44px);
+      line-height: 1.15;
+    }
+
+    .wall {
+      --fscale: min(var(--wmax, 1), var(--hmax, 1));
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding-top: 44px;
+    }
+    .frame {
+      --y1: #f7b6c6;
+      --y2: #e8899f;
+      --y3: #fff4f6;
+      --petal: #fffaf4;
+      --bud: #f6c445;
+      position: relative;
+      z-index: 0;
+      padding: 16px;
+      border-radius: 6px;
+      background:
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 3px),
+        linear-gradient(135deg, var(--y1) 25%, transparent 25%) -6px 0 / 12px 12px,
+        linear-gradient(225deg, var(--y1) 25%, transparent 25%) -6px 0 / 12px 12px,
+        linear-gradient(315deg, var(--y1) 25%, transparent 25%) 0 0 / 12px 12px,
+        linear-gradient(45deg, var(--y1) 25%, transparent 25%) 0 0 / 12px 12px,
+        var(--y2);
+      box-shadow: 0 12px 20px -10px rgba(42, 29, 22, 0.5);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .frame:nth-child(1) { transform: rotate(-2deg); }
+    .frame:nth-child(2) {
+      --y1: #b9d4ae;
+      --y2: #8fb385;
+      --y3: #f4f9f0;
+      --petal: #f7b6c6;
+      transform: rotate(1deg);
+    }
+    .frame:nth-child(3) {
+      --y1: #f3cf73;
+      --y2: #dcaa3c;
+      --y3: #fffaeb;
+      --petal: #b9d4ae;
+      --bud: #e8899f;
+      transform: rotate(2.5deg);
+    }
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      z-index: -1;
+      border-radius: 10px;
+      background: radial-gradient(circle, var(--y2) 0 5.5px, transparent 6px) 0 0 / 12px 12px round;
+    }
+    .frame.drop-target {
+      transform: scale(1.06) rotate(0deg);
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.8), 0 18px 28px -10px rgba(42, 29, 22, 0.55);
+    }
+    .hanger {
+      position: absolute;
+      top: -38px;
+      left: 15%;
+      width: 70%;
+      height: 40px;
+      color: var(--y2);
+      overflow: visible;
+    }
+    .pompom {
+      position: absolute;
+      top: -46px;
+      left: 50%;
+      width: 20px;
+      height: 20px;
+      margin-left: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, var(--y3), var(--y1) 50%, var(--y2));
+      box-shadow:
+        -4px -3px 0 -2px var(--y1),
+        4px -3px 0 -2px var(--y1),
+        4px 4px 0 -2px var(--y2),
+        -4px 4px 0 -2px var(--y2),
+        0 3px 5px rgba(0, 0, 0, 0.25);
+    }
+    .frame-window {
+      position: relative;
+      width: calc(var(--pw) * var(--fscale));
+      height: calc((var(--pw) + 42px) * var(--fscale));
+      background: var(--y3);
+      box-shadow: inset 0 2px 8px rgba(42, 29, 22, 0.25);
+      outline: 3px dashed var(--y1);
+      outline-offset: 4px;
+      cursor: pointer;
+    }
+    .frame.filled .frame-window { cursor: default; }
+    .frame-window:focus-visible { outline: 3px solid var(--ink); outline-offset: 6px; }
+    .frame-empty {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 10px;
+      color: var(--y2);
+      font-size: calc(16px * var(--fscale) + 2px);
+      text-align: center;
+    }
+    .frame.filled .frame-empty { display: none; }
+    .flower {
+      position: absolute;
+      right: -6px;
+      bottom: -6px;
+      z-index: 2;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bud);
+      box-shadow:
+        0 -9px 0 1px var(--petal),
+        8.5px -3px 0 1px var(--petal),
+        5.5px 7.5px 0 1px var(--petal),
+        -5.5px 7.5px 0 1px var(--petal),
+        -8.5px -3px 0 1px var(--petal);
+    }
+    .polaroid.framed {
+      left: 0;
+      top: 0;
+      transform-origin: 0 0;
+      transform: scale(var(--fscale));
+      transition: none;
+    }
+    .sale .domain {
+      display: block;
+      margin: 0.15em 0;
+      font-size: clamp(16px, 2vw, 28px);
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .sale em { font-style: normal; color: var(--red); }
+    .sale .price {
+      margin: 12px 0 0;
+      font-size: clamp(20px, 2.4vw, 34px);
+    }
+    .sale .price strong { font-weight: 400; color: var(--red); }
+    .sale .dutch {
+      margin: 10px 0 0;
+      font-size: clamp(14px, 1.4vw, 19px);
+      color: var(--muted);
+      line-height: 1.4;
+    }
+    .nowrap { white-space: nowrap; }
+
+    .polaroid {
+      position: absolute;
+      width: var(--pw);
+      cursor: grab;
+      touch-action: none;
+      perspective: 1000px;
+      transition: transform 0.25s ease;
+    }
+    .polaroid.dragging { cursor: grabbing; transition: transform 0.08s linear; }
+    .polaroid-inner {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+    .polaroid.flipped .polaroid-inner { transform: rotateY(180deg); }
+    .face {
+      position: relative;
+      padding: 10px 10px 52px;
+      background: var(--paper);
+      box-shadow: 0 4px 12px rgba(42, 29, 22, 0.22);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .polaroid.dragging .face { box-shadow: 0 22px 40px rgba(42, 29, 22, 0.38); }
+    .back {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      padding: 14px;
+      transform: rotateY(180deg);
+    }
+    .polaroid img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--ink);
+      pointer-events: none;
+      -webkit-user-drag: none;
+    }
+    .caption {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 22px;
+      min-height: 17px;
+      overflow: hidden;
+      font-size: 15px;
+      line-height: 1.1;
+      text-align: center;
+      white-space: nowrap;
+      outline: none;
+      cursor: text;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .caption:empty::before { content: "write here ✎"; opacity: 0.35; }
+    .date {
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 7px;
+      font-size: 10px;
+      text-align: center;
+      color: var(--muted);
+    }
+    .note {
+      width: 100%;
+      height: 100%;
+      padding: 8px;
+      border: 1px dashed #d8c7ad;
+      background: repeating-linear-gradient(transparent 0 23px, #eadcc6 23px 24px);
+      color: var(--ink);
+      font: 15px/24px "Permanent Marker", cursive;
+      resize: none;
+      outline: none;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .flip {
+      position: absolute;
+      top: 50%;
+      right: -18px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: var(--ink);
+      color: #fff;
+      font-size: 17px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-50%);
+      transition: opacity 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .polaroid.placed:hover .flip { opacity: 0.9; pointer-events: auto; }
+    .flip:focus-visible { opacity: 0.9; pointer-events: auto; outline: 2px solid #fff; outline-offset: 2px; }
+    @media (hover: none) {
+      .polaroid.placed .flip { opacity: 0.85; pointer-events: auto; }
+    }
+    .polaroid.ejecting { animation: eject 1.6s cubic-bezier(0.23, 1, 0.32, 1) forwards; }
+    @keyframes eject {
+      from { transform: translateY(100%); }
+      to { transform: translateY(14px); }
+    }
+
+    .toolbar {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 5000;
+      display: flex;
+      gap: 10px;
+    }
+    .tool {
+      padding: 8px 16px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: rgba(253, 250, 244, 0.92);
+      color: var(--ink);
+      font: 14px "Permanent Marker", cursive;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+    }
+    .tool:hover { background: var(--ink); color: #fff; }
+    .tool.reset { border-color: var(--red); color: var(--red); }
+    .tool.reset:hover { background: var(--red); color: #fff; }
+    .tool:active { transform: scale(0.95); }
+    .tool.celebrate { animation: nudge 1.4s ease-in-out infinite; }
+    @keyframes nudge {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(-2deg) scale(1.07); }
+    }
+
+    .desk-tools {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 5000;
+      display: flex;
+      gap: 10px;
+    }
+    .round {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      min-width: 38px;
+      height: 38px;
+      padding: 0 10px;
+      border: 2px solid var(--ink);
+      border-radius: 999px;
+      background: rgba(253, 250, 244, 0.92);
+      color: var(--ink);
+      font: 16px "Permanent Marker", cursive;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+    .round-label { font-size: 12px; }
+    .round:hover { background: var(--ink); color: #fff; }
+    .round[aria-pressed="true"] { background: var(--ink); color: #fff; }
+    .round:active { transform: scale(0.94); }
+
+    .countdown {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: clamp(30px, 6vw, 64px);
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.65);
+      pointer-events: none;
+    }
+    .countdown:empty { display: none; }
+
+    .remove {
+      position: absolute;
+      top: -14px;
+      right: -14px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: none;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fff;
+      font-size: 15px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .polaroid.placed:hover .remove { opacity: 0.95; pointer-events: auto; }
+    .remove:focus-visible { opacity: 0.95; pointer-events: auto; outline: 2px solid #fff; outline-offset: 2px; }
+    @media (hover: none) {
+      .polaroid.placed .remove { opacity: 0.9; pointer-events: auto; }
+    }
+
+    .wall.cheer .frame { animation: hop 0.6s ease; }
+    .wall.cheer .frame:nth-child(2) { animation-delay: 0.12s; }
+    .wall.cheer .frame:nth-child(3) { animation-delay: 0.24s; }
+    .frame.reyarn { animation: hop 0.45s ease; }
+    @keyframes hop {
+      0%, 100% { translate: 0 0; }
+      40% { translate: 0 -14px; }
+    }
+
+    .drop-hint {
+      position: fixed;
+      inset: 0;
+      z-index: 8000;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      background: rgba(253, 250, 244, 0.86);
+      color: var(--red);
+      font-size: clamp(24px, 4vw, 48px);
+      text-align: center;
+      border: 4px dashed var(--red);
+      pointer-events: none;
+    }
+    .drop-hint.on { display: grid; }
+
+    .help {
+      position: fixed;
+      inset: 0;
+      z-index: 8500;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(42, 29, 22, 0.4);
+    }
+    .help[hidden] { display: none; }
+    .help-card {
+      width: min(520px, 100%);
+      max-height: calc(100dvh - 40px);
+      overflow: auto;
+      padding: 26px 26px 22px;
+      border-radius: 4px;
+      background: var(--paper);
+      box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.55);
+      transform: rotate(-1.4deg);
+      text-align: left;
+      user-select: text;
+      -webkit-user-select: text;
+    }
+    .help-card h2 { margin: 0 0 14px; font-size: clamp(20px, 3vw, 28px); font-weight: 400; }
+    .help-card ul { margin: 0; padding-left: 18px; font-size: 15px; line-height: 1.6; }
+    .help-card li { margin-bottom: 8px; }
+    .help-card b { color: var(--red); font-weight: 400; }
+    .help-card kbd {
+      padding: 1px 7px;
+      border: 1.5px solid var(--ink);
+      border-radius: 5px;
+      font: inherit;
+      font-size: 13px;
+    }
+    .help-foot { margin: 16px 0 18px; font-size: 13px; color: var(--muted); }
+
+    .flash {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: #fff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease-out;
+    }
+    .flash.on { opacity: 1; transition: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .shutter.invite { animation: none; }
+    }
+
+    @media (max-width: 1400px) {
+      .wall { --wmax: 0.85; gap: 26px; }
+    }
+    @media (max-width: 1100px) {
+      .wall { --wmax: 0.7; gap: 22px; }
+    }
+    @media (max-width: 940px) {
+      .wall { --wmax: 0.58; gap: 20px; }
+    }
+    @media (max-width: 830px) and (min-width: 769px) {
+      .wall { --wmax: 0.48; gap: 18px; }
+    }
+
+    @media (max-height: 880px) and (min-width: 769px) {
+      .wall { --hmax: 0.7; gap: 22px; }
+      .desk { padding-top: 58px; gap: 16px; }
+      .sale h1 { font-size: clamp(20px, 2.4vw, 34px); }
+      .sale .price { font-size: clamp(17px, 1.9vw, 26px); }
+      .sale .dutch { font-size: 14px; }
+      .camera { width: min(320px, 100%); }
+      .hint { margin-bottom: 12px; font-size: 14px; }
+      .cta { margin-top: 20px; }
+    }
+
+    @media (max-height: 700px) and (min-width: 769px) {
+      .wall { --hmax: 0.52; gap: 18px; }
+      .desk { padding-top: 50px; gap: 8px; }
+      .sale h1 { font-size: clamp(16px, 1.9vw, 24px); }
+      .sale .domain { font-size: 13px; }
+      .sale .price { margin-top: 6px; font-size: clamp(14px, 1.5vw, 19px); }
+      .sale .dutch { margin-top: 6px; font-size: 12px; }
+      .camera { width: min(240px, 100%); }
+      .hint { font-size: 12px; margin-bottom: 8px; line-height: 1.2; }
+      .cta { margin-top: 12px; padding: 9px 16px; font-size: 13px; }
+      .frame { padding: 10px; }
+      .hanger { top: -26px; height: 28px; }
+      .pompom { top: -32px; width: 14px; height: 14px; margin-left: -7px; }
+      .toolbar { top: 10px; right: 10px; gap: 8px; }
+      .tool { padding: 6px 12px; font-size: 12px; }
+    }
+
+    @media (max-width: 768px) {
+      :root { --pw: 132px; }
+      body { flex-direction: column-reverse; }
+      .desk { flex: 1 1 auto; gap: 10px; padding: 54px 16px 4px; }
+      .wall { --fscale: 0.62; gap: 14px; padding-top: 30px; }
+      .frame { padding: 10px; }
+      .hanger { top: -26px; height: 28px; }
+      .pompom { top: -32px; width: 14px; height: 14px; margin-left: -7px; }
+      .camera-zone {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: none;
+        padding: 0 16px 20px;
+      }
+      .camera { width: min(250px, 58vw); }
+      .hint { margin-bottom: 8px; font-size: 13px; }
+      .cta { margin-top: 16px; padding: 10px 20px; font-size: 15px; }
+      .sale h1 { font-size: clamp(21px, 5.6vw, 28px); }
+      .sale .domain { font-size: clamp(12px, 3.6vw, 16px); }
+      .sale .price { margin-top: 8px; font-size: clamp(16px, 4.2vw, 20px); }
+      .sale .dutch { font-size: 12px; }
+      .toolbar { top: 12px; right: 12px; gap: 8px; }
+      .tool { padding: 6px 12px; font-size: 12px; }
+      .caption { font-size: 13px; }
+    }
+
+    @media (max-width: 768px) and (max-height: 700px) {
+      :root { --pw: 118px; }
+      .desk { padding-top: 50px; gap: 6px; }
+      .wall { --fscale: 0.55; gap: 12px; padding-top: 26px; }
+      .camera { width: min(210px, 52vw); }
+      .hint small { display: none; }
+      .cta { margin-top: 12px; padding: 8px 16px; font-size: 13px; }
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 6000;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 10px 12px 10px 18px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: #fff;
+      font-size: 14px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, 160%);
+      transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1.1), opacity 0.2s;
+      box-shadow: 0 14px 26px -12px rgba(0, 0, 0, 0.55);
+    }
+    .toast.show { opacity: 1; pointer-events: auto; transform: translate(-50%, 0); }
+    .toast button {
+      padding: 5px 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      border-radius: 999px;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      cursor: pointer;
+    }
+    .toast button:hover { background: rgba(255, 255, 255, 0.14); }
+
+    .add-photo {
+      margin: -8px 0 14px;
+      padding: 0;
+      border: none;
+      background: none;
+      color: var(--muted);
+      font: 13px "Permanent Marker", cursive;
+      text-decoration: underline dashed;
+      text-underline-offset: 4px;
+      cursor: pointer;
+    }
+    .add-photo:hover { color: var(--red); }
+
+    .camera-extras {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4px 16px;
+      margin: -8px 0 14px;
+    }
+    .camera-extras .add-photo { margin: 0; }
+    .frame { cursor: pointer; }
+
+    .rain {
+      position: fixed;
+      top: -70px;
+      z-index: 9500;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(118vh) rotate(260deg); }
+    }
+
+    .zoom {
+      position: fixed;
+      inset: 0;
+      z-index: 8600;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(42, 29, 22, 0.55);
+    }
+    .zoom[hidden] { display: none; }
+    .zoom-card {
+      width: min(430px, 92vw);
+      max-height: calc(100dvh - 40px);
+      overflow: auto;
+      padding: 18px 18px 16px;
+      background: var(--paper);
+      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+      transform: rotate(-1.2deg);
+      text-align: center;
+    }
+    .zoom-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      background: var(--ink);
+    }
+    .zoom-card .z-caption { margin: 12px 0 2px; font-size: 20px; }
+    .zoom-card .z-date { font-size: 12px; color: var(--muted); }
+    .zoom-card .z-note { margin: 10px 0 0; font-size: 14px; color: var(--muted); white-space: pre-wrap; }
+    .zoom-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 16px; }
+
+    @media (max-width: 480px) {
+      .toolbar { top: 10px; right: 10px; gap: 7px; }
+      .tool { padding: 5px 10px; font-size: 11px; }
+      .desk-tools { top: 50px; left: auto; right: 10px; gap: 8px; }
+      .round { min-width: 32px; height: 32px; padding: 0 8px; font-size: 14px; }
+      .round-label { font-size: 11px; }
+      .desk { padding-top: 94px; }
+    }
+
+    @media (max-width: 480px) and (max-height: 720px) {
+      .desk { padding-top: 86px; gap: 4px; }
+      .wall { --fscale: 0.5; gap: 12px; padding-top: 20px; }
+      .camera { width: min(182px, 50vw); }
+      .hint { margin-bottom: 4px; font-size: 12px; }
+      .add-photo { margin-bottom: 8px; font-size: 12px; }
+      .cta { margin-top: 10px; padding: 8px 16px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <button class="tool" id="download-btn" type="button">DOWNLOAD</button>
+    <button class="tool" id="share-btn" type="button">SHARE</button>
+    <button class="tool reset" id="reset-btn" type="button">RESET</button>
+  </div>
+  <div class="desk-tools">
+    <button class="round" id="sound-btn" type="button" aria-pressed="false" aria-label="Mute sound" title="Sound on / off">🔊</button>
+    <button class="round" id="timer-btn" type="button" aria-pressed="false" aria-label="3s self-timer off" title="Self-timer: 3 seconds">⏱<span class="round-label">3s</span></button>
+    <button class="round" id="help-btn" type="button" aria-label="How it works" title="How it works">?</button>
+  </div>
+  <input type="file" id="file-input" accept="image/*" multiple hidden>
+  <div class="drop-hint" id="drop-hint" aria-hidden="true">drop your photos here 📸</div>
+
+  <section class="camera-zone">
+    <p class="hint">Press the red button 📸<small>photos never leave your browser</small></p>
+    <div class="camera-extras">
+      <button class="add-photo" id="add-btn" type="button">+ add photos from your device</button>
+      <button class="add-photo" id="film-btn" type="button" title="Change the film look">🎞 film: PHO</button>
+    </div>
+    <div class="camera">
+      <div class="slot" id="slot"></div>
+      <div class="camera-top"></div>
+      <div class="camera-body">
+        <div class="stripe"></div>
+        <div class="flash-window"></div>
+        <div class="viewfinder"></div>
+        <div class="lens" id="lens">
+          <div class="lens-glass">
+            <video id="cam-feed" autoplay playsinline muted></video>
+            <div class="lens-fallback">🍜</div>
+            <div class="countdown" id="countdown" aria-live="assertive"></div>
+          </div>
+        </div>
+        <button class="shutter invite" id="shutter" type="button" aria-label="Take a photo"></button>
+        <span class="brand">PHO-CAM 1000</span>
+      </div>
+    </div>
+    <a class="cta" href="https://thememorylabmaastricht.nl">Click here · Klik hier <span aria-hidden="true">→</span></a>
+  </section>
+
+  <main class="desk" id="desk">
+    <div class="sale">
+      <h1>This domain <span class="domain">thememorylabmaastricht.com</span> is <em>ALSO</em> for sale:</h1>
+      <p class="price"><strong>1000</strong> bowls of pho at Nga Ngo restaurant</p>
+      <p class="dutch" lang="nl">Dit domein <span class="nowrap">thememorylabmaastricht.com</span> is <em>OOK</em> te koop:<br>1000 kommen pho bij restaurant Nga Ngo</p>
+    </div>
+    <div class="wall">
+      <div class="frame">
+        <svg class="hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 40 L50 4 L96 40" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"/></svg>
+        <span class="pompom"></span>
+        <div class="frame-window" role="button" tabindex="0" aria-label="Drop a photo here — place the newest print in this frame"><span class="frame-empty">drop a photo here</span></div>
+        <span class="flower"></span>
+      </div>
+      <div class="frame">
+        <svg class="hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 40 L50 4 L96 40" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"/></svg>
+        <span class="pompom"></span>
+        <div class="frame-window" role="button" tabindex="0" aria-label="Drop a photo here — place the newest print in this frame"><span class="frame-empty">drop a photo here</span></div>
+        <span class="flower"></span>
+      </div>
+      <div class="frame">
+        <svg class="hanger" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 40 L50 4 L96 40" fill="none" stroke="currentColor" stroke-width="3" stroke-dasharray="4 2" vector-effect="non-scaling-stroke"/></svg>
+        <span class="pompom"></span>
+        <div class="frame-window" role="button" tabindex="0" aria-label="Drop a photo here — place the newest print in this frame"><span class="frame-empty">drop a photo here</span></div>
+        <span class="flower"></span>
+      </div>
+    </div>
+  </main>
+
+  <div class="stage" id="stage" aria-live="polite"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"><span id="toast-text">Cleared</span><button type="button" id="toast-action">UNDO</button></div>
+
+  <div class="flash" id="flash"></div>
+
+  <div class="help" id="help" hidden>
+    <div class="help-card" role="dialog" aria-modal="true" aria-labelledby="help-title">
+      <h2 id="help-title">How to use your PHO-CAM</h2>
+      <ul>
+        <li><b>SNAP</b> — or press <kbd>Space</kbd> — takes a photo. <b>⏱ 3s</b> gives you time to pose.</li>
+        <li><b>🎞 film</b> switches the look: PHO, 1975, B&amp;W, VIVID.</li>
+        <li><b>Drag</b> a print into a frame, or simply <b>tap the frame</b>.</li>
+        <li><b>Write</b> on the caption. Flip <b>↻</b> for a note on the back.</li>
+        <li><b>Double-click</b> a print to zoom in and save it on its own.</li>
+        <li><b>Click a frame's border</b> to re-crochet it in a new colour.</li>
+        <li><b>+ add photos</b> loads pictures from your device, or drop image files anywhere.</li>
+        <li><b>DOWNLOAD</b> prints your wall. <b>SHARE</b> sends it to a friend.</li>
+        <li><b>✕</b> removes one print. <b>RESET</b> clears the desk. Both can be undone.</li>
+        <li>Type <kbd>p</kbd><kbd>h</kbd><kbd>o</kbd> anywhere for a little pho storm.</li>
+      </ul>
+      <p class="help-foot">Photos never leave your browser. Your wall is kept for this visit only.</p>
+      <button class="tool" id="help-close" type="button">GOT IT</button>
+    </div>
+  </div>
+
+  <div class="zoom" id="zoom" hidden>
+    <div class="zoom-card" role="dialog" aria-modal="true" aria-label="Print preview">
+      <img id="zoom-img" alt="Instant photo enlarged">
+      <p class="z-caption" id="zoom-caption"></p>
+      <p class="z-note" id="zoom-note"></p>
+      <span class="z-date" id="zoom-date"></span>
+      <div class="zoom-actions">
+        <button class="tool" id="zoom-save" type="button">SAVE THIS PRINT</button>
+        <button class="tool" id="zoom-close" type="button">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const video = document.getElementById('cam-feed');
+    const lens = document.getElementById('lens');
+    const shutter = document.getElementById('shutter');
+    const slot = document.getElementById('slot');
+    const flash = document.getElementById('flash');
+    const stage = document.getElementById('stage');
+    const frames = Array.from(document.querySelectorAll('.frame'));
+    const resetBtn = document.getElementById('reset-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const addBtn = document.getElementById('add-btn');
+    const shareBtn = document.getElementById('share-btn');
+    const fileInput = document.getElementById('file-input');
+    const soundBtn = document.getElementById('sound-btn');
+    const timerBtn = document.getElementById('timer-btn');
+    const helpBtn = document.getElementById('help-btn');
+    const help = document.getElementById('help');
+    const helpClose = document.getElementById('help-close');
+    const countdownEl = document.getElementById('countdown');
+    const dropHint = document.getElementById('drop-hint');
+    const filmBtn = document.getElementById('film-btn');
+    const zoom = document.getElementById('zoom');
+    const zoomImg = document.getElementById('zoom-img');
+    const zoomCaption = document.getElementById('zoom-caption');
+    const zoomNote = document.getElementById('zoom-note');
+    const zoomDate = document.getElementById('zoom-date');
+    const zoomClose = document.getElementById('zoom-close');
+    const zoomSave = document.getElementById('zoom-save');
+    const toast = document.getElementById('toast');
+    const toastText = document.getElementById('toast-text');
+    const toastAction = document.getElementById('toast-action');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    const PHOTO_SIZE = 480;
+    const CAPTION_MAX = 18;
+    const NOTE_MAX = 60;
+    const SNAP_COOLDOWN_MS = 700;
+    const CAMERA_WAIT_MS = 2500;
+    const STORE_KEY = 'pho-wall-v1';
+    const UNDEVELOPED_FILTER = 'blur(12px) sepia(0.7) brightness(1.6) contrast(0.6)';
+    const DEVELOPED_FILTER = 'blur(0px) sepia(0) brightness(1) contrast(1)';
+    const PRINT = { width: 1600, height: 1100, scale: 2, photoWidth: 300, frameGap: 70, textCenterY: 270, framesTop: 560 };
+    const FILMS = [
+      { name: 'PHO', filter: 'contrast(1.1) saturate(1.2) sepia(0.15)' },
+      { name: '1975', filter: 'contrast(0.92) saturate(0.72) sepia(0.45) brightness(1.06)' },
+      { name: 'B&W', filter: 'grayscale(1) contrast(1.18)' },
+      { name: 'VIVID', filter: 'contrast(1.16) saturate(1.65)' },
+    ];
+    const YARNS = [
+      { y1: '#f7b6c6', y2: '#e8899f', y3: '#fff4f6', petal: '#fffaf4', bud: '#f6c445' },
+      { y1: '#b9d4ae', y2: '#8fb385', y3: '#f4f9f0', petal: '#f7b6c6', bud: '#f6c445' },
+      { y1: '#f3cf73', y2: '#dcaa3c', y3: '#fffaeb', petal: '#b9d4ae', bud: '#e8899f' },
+      { y1: '#a9c8e8', y2: '#7fa3cc', y3: '#f2f8ff', petal: '#fffaf4', bud: '#f6c445' },
+      { y1: '#d3b6e8', y2: '#ab8cc9', y3: '#faf4ff', petal: '#f3cf73', bud: '#8fb385' },
+      { y1: '#f6b48f', y2: '#dd8f66', y3: '#fff3ec', petal: '#fffaf4', bud: '#8fb385' },
+    ];
+    const RAIN_DROPS = ['🍜', '🍜', '🍜', '🌶️', '🥢', '🌿', '🍋'];
+
+    const developAnimations = new WeakMap();
+    let topZ = 100;
+    let audioCtx = null;
+    let snapLocked = false;
+    let lastDropAt = 0;
+    let resetSnapshot = null;
+    let toastTimer = 0;
+    let saveTimer = 0;
+    let restoring = false;
+    let timerSeconds = 0;
+    let muted = false;
+    let celebrated = false;
+    let dragDepth = 0;
+    let filmIndex = 0;
+    let zoomedCard = null;
+    let typedWord = '';
+    try {
+      muted = localStorage.getItem('pho-muted') === '1';
+    } catch {
+      muted = false;
+    }
+
+    function wait(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    function todayString() {
+      const now = new Date();
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const day = String(now.getDate()).padStart(2, '0');
+      return `${now.getFullYear()}/${month}/${day}`;
+    }
+
+    function markerFont(size) {
+      return `${size}px "Permanent Marker", "Apple Color Emoji", "Segoe UI Emoji", sans-serif`;
+    }
+
+    function newPhotoCanvas() {
+      const canvas = document.createElement('canvas');
+      canvas.width = PHOTO_SIZE;
+      canvas.height = PHOTO_SIZE;
+      return canvas;
+    }
+
+    function addVignette(ctx) {
+      const center = PHOTO_SIZE / 2;
+      const gradient = ctx.createRadialGradient(center, center, PHOTO_SIZE * 0.3, center, center, PHOTO_SIZE * 0.72);
+      gradient.addColorStop(0, 'rgba(0, 0, 0, 0)');
+      gradient.addColorStop(1, 'rgba(40, 20, 10, 0.35)');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, PHOTO_SIZE, PHOTO_SIZE);
+    }
+
+    function paintCard({ background, color, lines }) {
+      const canvas = newPhotoCanvas();
+      const ctx = canvas.getContext('2d');
+      const gap = 14;
+      const totalHeight = lines.reduce((sum, line) => sum + line.size, 0) + gap * (lines.length - 1);
+      ctx.fillStyle = background;
+      ctx.fillRect(0, 0, PHOTO_SIZE, PHOTO_SIZE);
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      let y = (PHOTO_SIZE - totalHeight) / 2;
+      for (const line of lines) {
+        ctx.font = markerFont(line.size);
+        ctx.fillText(line.text, PHOTO_SIZE / 2, y + line.size / 2, PHOTO_SIZE - 40);
+        y += line.size + gap;
+      }
+      addVignette(ctx);
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
+    function captureFrame() {
+      if (!video.videoWidth) {
+        return paintCard({
+          background: '#f6ecdc',
+          color: '#2a1d16',
+          lines: [{ text: '🍜', size: 180 }, { text: 'no camera,', size: 44 }, { text: 'only pho', size: 44 }],
+        });
+      }
+      const canvas = newPhotoCanvas();
+      const ctx = canvas.getContext('2d');
+      const size = Math.min(video.videoWidth, video.videoHeight);
+      ctx.filter = FILMS[filmIndex].filter;
+      ctx.translate(PHOTO_SIZE, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(
+        video,
+        (video.videoWidth - size) / 2,
+        (video.videoHeight - size) / 2,
+        size,
+        size,
+        0,
+        0,
+        PHOTO_SIZE,
+        PHOTO_SIZE
+      );
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.filter = 'none';
+      addVignette(ctx);
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
+    function setRotation(el, degrees, scale = 1) {
+      el.dataset.rot = String(degrees);
+      el.style.transform = `rotate(${degrees}deg) scale(${scale})`;
+    }
+
+    function randomTilt() {
+      return Math.round(Math.random() * 18 - 9);
+    }
+
+    function liftToStage(el) {
+      if (el.parentElement === stage) return;
+      const rect = el.getBoundingClientRect();
+      const left = rect.left + rect.width / 2 - el.offsetWidth / 2;
+      const top = rect.top + rect.height / 2 - el.offsetHeight / 2;
+      const frame = el.closest('.frame');
+      if (frame) frame.classList.remove('filled');
+      el.classList.remove('ejecting', 'framed');
+      stage.appendChild(el);
+      el.style.left = `${left}px`;
+      el.style.top = `${top}px`;
+      setRotation(el, Number(el.dataset.rot || 0));
+      updateCelebration();
+    }
+
+    function frameUnder(el) {
+      const rect = el.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+      return frames.find((frame) => {
+        const box = frame.getBoundingClientRect();
+        return x >= box.left && x <= box.right && y >= box.top && y <= box.bottom;
+      }) || null;
+    }
+
+    function overlapArea(a, b) {
+      const width = Math.min(a.right, b.right) - Math.max(a.left, b.left);
+      const height = Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top);
+      return width > 0 && height > 0 ? width * height : 0;
+    }
+
+    function looseCards() {
+      return [
+        ...stage.querySelectorAll(':scope > .polaroid'),
+        ...slot.querySelectorAll('.polaroid'),
+      ];
+    }
+
+    function parkInFreeSpot(el) {
+      const width = el.offsetWidth;
+      const height = el.offsetHeight;
+      const viewWidth = window.innerWidth;
+      const viewHeight = window.innerHeight;
+      const obstacles = [
+        ...frames.map((frame) => frame.getBoundingClientRect()),
+        document.querySelector('.camera').getBoundingClientRect(),
+        document.querySelector('.sale').getBoundingClientRect(),
+        document.querySelector('.cta').getBoundingClientRect(),
+        ...looseCards().filter((card) => card !== el).map((card) => card.getBoundingClientRect()),
+      ];
+      const stepX = Math.max(30, (viewWidth - width) / 5);
+      const stepY = Math.max(30, (viewHeight - height) / 4);
+      let best = null;
+      for (let top = 10; top <= viewHeight - height - 10; top += stepY) {
+        for (let left = 10; left <= viewWidth - width - 10; left += stepX) {
+          const box = { left, top, right: left + width, bottom: top + height };
+          const covered = obstacles.reduce((sum, obstacle) => sum + overlapArea(box, obstacle), 0) / (width * height);
+          const score = covered + (1 - top / Math.max(1, viewHeight - height)) * 0.4;
+          if (!best || score < best.score) best = { left, top, score };
+        }
+      }
+      if (!best) return;
+      el.style.left = `${Math.round(best.left)}px`;
+      el.style.top = `${Math.round(best.top)}px`;
+      el.style.zIndex = String(++topZ);
+      setRotation(el, randomTilt());
+    }
+
+    function kickOut(el) {
+      liftToStage(el);
+      parkInFreeSpot(el);
+    }
+
+    function mountInFrame(el, frame) {
+      const frameWindow = frame.querySelector('.frame-window');
+      const existing = frameWindow.querySelector('.polaroid');
+      if (existing && existing !== el) kickOut(existing);
+      frameWindow.appendChild(el);
+      el.classList.add('framed', 'placed');
+      el.classList.remove('ejecting');
+      el.style.left = '';
+      el.style.top = '';
+      el.style.zIndex = '';
+      el.style.transform = '';
+      el.dataset.rot = '0';
+      frame.classList.add('filled');
+      updateCelebration();
+    }
+
+    function dropInFrame(el, frame) {
+      const first = el.getBoundingClientRect();
+      mountInFrame(el, frame);
+      const last = el.getBoundingClientRect();
+      el.animate(
+        [
+          { transform: `translate(${first.left - last.left}px, ${first.top - last.top}px) scale(${first.width / el.offsetWidth})` },
+          { transform: `scale(${last.width / el.offsetWidth})` },
+        ],
+        { duration: 320, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1.15)' }
+      );
+    }
+
+    function highlightFrame(target) {
+      frames.forEach((frame) => frame.classList.toggle('drop-target', frame === target));
+    }
+
+    function startDeveloping(el) {
+      const img = el.querySelector('img');
+      if (reducedMotion.matches) {
+        img.style.filter = DEVELOPED_FILTER;
+        return;
+      }
+      const animation = img.animate(
+        [{ filter: UNDEVELOPED_FILTER }, { filter: DEVELOPED_FILTER }],
+        { duration: 8000, easing: 'ease-in-out', fill: 'forwards' }
+      );
+      developAnimations.set(el, animation);
+    }
+
+    function wireCaption(caption) {
+      caption.setAttribute('role', 'textbox');
+      caption.setAttribute('aria-label', 'Photo caption');
+      caption.addEventListener('input', () => {
+        if (caption.textContent.length > CAPTION_MAX) {
+          caption.textContent = caption.textContent.slice(0, CAPTION_MAX);
+          const range = document.createRange();
+          range.selectNodeContents(caption);
+          range.collapse(false);
+          const selection = window.getSelection();
+          selection.removeAllRanges();
+          selection.addRange(range);
+        }
+        scheduleSave();
+      });
+      caption.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter') return;
+        event.preventDefault();
+        caption.blur();
+      });
+    }
+
+    function makeDraggable(el) {
+      el.addEventListener('pointerdown', (event) => {
+        if (event.target.closest('.caption, .note, .flip, .remove')) return;
+        event.preventDefault();
+        liftToStage(el);
+        el.style.zIndex = String(++topZ);
+        el.classList.add('dragging');
+        const animation = developAnimations.get(el);
+        if (animation) animation.playbackRate = 4;
+
+        const startX = event.clientX;
+        const startY = event.clientY;
+        const startLeft = parseFloat(el.style.left);
+        const startTop = parseFloat(el.style.top);
+        let lastX = event.clientX;
+        let tilt = 0;
+        el.setPointerCapture(event.pointerId);
+
+        const onMove = (moveEvent) => {
+          const halfWidth = el.offsetWidth / 2;
+          const left = Math.min(window.innerWidth - halfWidth, Math.max(-halfWidth, startLeft + moveEvent.clientX - startX));
+          const top = Math.min(window.innerHeight - 60, Math.max(-el.offsetHeight / 2, startTop + moveEvent.clientY - startY));
+          el.style.left = `${left}px`;
+          el.style.top = `${top}px`;
+          const rawTilt = Math.max(-12, Math.min(12, (moveEvent.clientX - lastX) * 1.5));
+          tilt = tilt * 0.7 + rawTilt * 0.3;
+          lastX = moveEvent.clientX;
+          setRotation(el, tilt, 1.06);
+          highlightFrame(frameUnder(el));
+        };
+
+        const onEnd = () => {
+          el.removeEventListener('pointermove', onMove);
+          el.removeEventListener('pointerup', onEnd);
+          el.removeEventListener('pointercancel', onEnd);
+          el.classList.remove('dragging');
+          el.classList.add('placed');
+          highlightFrame(null);
+          lastDropAt = Date.now();
+          const target = frameUnder(el);
+          if (target) {
+            dropInFrame(el, target);
+          } else {
+            setRotation(el, randomTilt());
+          }
+          scheduleSave();
+        };
+
+        el.addEventListener('pointermove', onMove);
+        el.addEventListener('pointerup', onEnd);
+        el.addEventListener('pointercancel', onEnd);
+      });
+    }
+
+    function createPolaroid(src, caption = '') {
+      const el = document.createElement('div');
+      el.className = 'polaroid';
+      el.setAttribute('role', 'group');
+      el.setAttribute('aria-label', 'Instant photo');
+      el.innerHTML = `
+        <div class="polaroid-inner">
+          <div class="face front">
+            <img alt="Instant photo">
+            <div class="caption" contenteditable="plaintext-only" spellcheck="false"></div>
+            <div class="date"></div>
+          </div>
+          <div class="face back">
+            <textarea class="note" maxlength="${NOTE_MAX}" placeholder="Write a note…" aria-label="Note on the back"></textarea>
+          </div>
+        </div>
+        <button class="flip" type="button" aria-label="Flip photo">↻</button>
+        <button class="remove" type="button" aria-label="Remove photo">✕</button>
+      `;
+      el.querySelector('img').src = src;
+      el.querySelector('.caption').textContent = caption;
+      el.querySelector('.date').textContent = todayString();
+      el.querySelector('.flip').addEventListener('click', () => {
+        el.classList.toggle('flipped');
+        scheduleSave();
+      });
+      el.querySelector('.note').addEventListener('input', scheduleSave);
+      el.querySelector('.remove').addEventListener('click', () => removeCard(el));
+      el.addEventListener('dblclick', (event) => {
+        if (event.target.closest('.caption, .note, .flip, .remove')) return;
+        openZoom(el);
+      });
+      wireCaption(el.querySelector('.caption'));
+      makeDraggable(el);
+      return el;
+    }
+
+    function unlockAudio() {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      audioCtx = audioCtx || new AudioContextClass();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function beep() {
+      if (!audioCtx || muted) return;
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(880, now);
+      gain.gain.setValueAtTime(0.0001, now);
+      gain.gain.exponentialRampToValueAtTime(0.1, now + 0.01);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.14);
+      osc.connect(gain).connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.15);
+    }
+
+    function playShutterSound() {
+      if (!audioCtx || muted) return;
+      const now = audioCtx.currentTime;
+
+      const clickLength = Math.floor(audioCtx.sampleRate * 0.12);
+      const clickBuffer = audioCtx.createBuffer(1, clickLength, audioCtx.sampleRate);
+      const samples = clickBuffer.getChannelData(0);
+      for (let i = 0; i < clickLength; i++) samples[i] = (Math.random() * 2 - 1) * (1 - i / clickLength);
+      const click = audioCtx.createBufferSource();
+      click.buffer = clickBuffer;
+      const clickFilter = audioCtx.createBiquadFilter();
+      clickFilter.type = 'highpass';
+      clickFilter.frequency.value = 1800;
+      const clickGain = audioCtx.createGain();
+      clickGain.gain.setValueAtTime(0.5, now);
+      clickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+      click.connect(clickFilter).connect(clickGain).connect(audioCtx.destination);
+      click.start(now);
+
+      const whirrLength = Math.floor(audioCtx.sampleRate * 0.55);
+      const whirrBuffer = audioCtx.createBuffer(1, whirrLength, audioCtx.sampleRate);
+      const whirrSamples = whirrBuffer.getChannelData(0);
+      for (let i = 0; i < whirrLength; i += 1) whirrSamples[i] = Math.random() * 2 - 1;
+      const whirr = audioCtx.createBufferSource();
+      whirr.buffer = whirrBuffer;
+      const whirrFilter = audioCtx.createBiquadFilter();
+      whirrFilter.type = 'bandpass';
+      whirrFilter.frequency.setValueAtTime(1900, now + 0.1);
+      whirrFilter.frequency.exponentialRampToValueAtTime(3400, now + 0.6);
+      whirrFilter.Q.value = 1.1;
+      const whirrGain = audioCtx.createGain();
+      whirrGain.gain.setValueAtTime(0.0001, now + 0.1);
+      whirrGain.gain.exponentialRampToValueAtTime(0.22, now + 0.16);
+      whirrGain.gain.setValueAtTime(0.22, now + 0.42);
+      whirrGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.64);
+      const gears = audioCtx.createOscillator();
+      gears.type = 'square';
+      gears.frequency.value = 28;
+      const gearDepth = audioCtx.createGain();
+      gearDepth.gain.value = 0.07;
+      const servo = audioCtx.createOscillator();
+      servo.type = 'sine';
+      servo.frequency.setValueAtTime(950, now + 0.1);
+      servo.frequency.linearRampToValueAtTime(1550, now + 0.58);
+      const servoGain = audioCtx.createGain();
+      servoGain.gain.setValueAtTime(0.0001, now + 0.1);
+      servoGain.gain.exponentialRampToValueAtTime(0.03, now + 0.2);
+      servoGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.62);
+      whirr.connect(whirrFilter).connect(whirrGain).connect(audioCtx.destination);
+      gears.connect(gearDepth).connect(whirrGain.gain);
+      servo.connect(servoGain).connect(audioCtx.destination);
+      whirr.start(now + 0.1);
+      whirr.stop(now + 0.68);
+      gears.start(now + 0.1);
+      gears.stop(now + 0.68);
+      servo.start(now + 0.1);
+      servo.stop(now + 0.68);
+    }
+
+    function fireFlash() {
+      if (reducedMotion.matches) return;
+      const clear = () => flash.classList.remove('on');
+      flash.classList.add('on');
+      requestAnimationFrame(() => requestAnimationFrame(clear));
+      setTimeout(clear, 120);
+    }
+
+    function eject(src) {
+      const previous = slot.firstElementChild;
+      if (previous) {
+        liftToStage(previous);
+        previous.classList.add('placed');
+        parkInFreeSpot(previous);
+      }
+      const el = createPolaroid(src);
+      el.classList.add('ejecting');
+      slot.appendChild(el);
+      startDeveloping(el);
+      scheduleSave();
+    }
+
+    async function runCountdown(seconds) {
+      for (let remaining = seconds; remaining > 0; remaining -= 1) {
+        countdownEl.textContent = String(remaining);
+        beep();
+        await wait(1000);
+      }
+      countdownEl.textContent = '';
+    }
+
+    async function snap() {
+      if (snapLocked) return;
+      snapLocked = true;
+      shutter.classList.remove('invite');
+      if (timerSeconds) await runCountdown(timerSeconds);
+      if (!video.videoWidth) {
+        await Promise.race([startCamera(), wait(CAMERA_WAIT_MS)]);
+      }
+      fireFlash();
+      playShutterSound();
+      eject(captureFrame());
+      setTimeout(() => { snapLocked = false; }, SNAP_COOLDOWN_MS);
+    }
+
+    let cameraPromise = null;
+    function startCamera() {
+      if (cameraPromise) return cameraPromise;
+      cameraPromise = (async () => {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          lens.classList.add('no-cam');
+          return false;
+        }
+        try {
+          video.srcObject = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: 'user', width: { ideal: 640 }, height: { ideal: 640 } },
+            audio: false,
+          });
+          await video.play().catch(() => {});
+          return true;
+        } catch {
+          lens.classList.add('no-cam');
+          return false;
+        }
+      })();
+      return cameraPromise;
+    }
+
+    function cssVar(el, name) {
+      return getComputedStyle(el).getPropertyValue(name).trim();
+    }
+
+    function rotationOf(el) {
+      const transform = getComputedStyle(el).transform;
+      if (!transform || transform === 'none') return 0;
+      const matrix = new DOMMatrixReadOnly(transform);
+      return Math.atan2(matrix.b, matrix.a);
+    }
+
+    function drawDot(ctx, { x, y, radius }) {
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    function drawRichLine(ctx, { segments, y, size }) {
+      ctx.font = markerFont(size);
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      const widths = segments.map((segment) => ctx.measureText(segment.text).width);
+      let x = -widths.reduce((sum, width) => sum + width, 0) / 2;
+      segments.forEach((segment, index) => {
+        ctx.fillStyle = segment.color;
+        ctx.fillText(segment.text, x, y);
+        x += widths[index];
+      });
+    }
+
+    function drawDesk(ctx, palette) {
+      ctx.fillStyle = palette.desk;
+      ctx.fillRect(0, 0, PRINT.width, PRINT.height);
+      ctx.fillStyle = palette.dot;
+      const step = 26;
+      for (let y = 0; y <= PRINT.height + step; y += step) {
+        for (let x = 0; x <= PRINT.width + step; x += step) {
+          drawDot(ctx, { x, y, radius: 3.6 });
+          drawDot(ctx, { x: x + step / 2, y: y + step / 2, radius: 3.6 });
+        }
+      }
+    }
+
+    function textSegments(nodes, colorOf) {
+      const segments = [];
+      const walk = (node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const text = node.textContent.replace(/\s+/g, ' ').trim();
+          if (text) segments.push({ text, color: colorOf(node.parentElement) });
+          return;
+        }
+        if (node.nodeType !== Node.ELEMENT_NODE || node.tagName === 'BR') return;
+        Array.from(node.childNodes).forEach(walk);
+      };
+      Array.from(nodes).forEach(walk);
+      return segments;
+    }
+
+    function spaced(segments) {
+      return segments.map((segment, index) => (index === 0 ? segment : { ...segment, text: ` ${segment.text}` }));
+    }
+
+    function saleLines() {
+      const colorOf = (el) => (el ? getComputedStyle(el).color : '');
+      const h1 = document.querySelector('.sale h1');
+      const domain = h1.querySelector('.domain');
+      const headNodes = Array.from(h1.childNodes);
+      const domainIndex = headNodes.indexOf(domain);
+      const price = document.querySelector('.sale .price');
+      const dutch = document.querySelector('.sale .dutch');
+      const dutchLines = [[]];
+      Array.from(dutch.childNodes).forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'BR') dutchLines.push([]);
+        else dutchLines[dutchLines.length - 1].push(node);
+      });
+      return [
+        { y: -160, size: 64, segments: textSegments(headNodes.slice(0, domainIndex), colorOf) },
+        { y: -95, size: 40, segments: textSegments([domain], colorOf) },
+        { y: -25, size: 64, segments: textSegments(headNodes.slice(domainIndex + 1), colorOf) },
+        { y: 55, size: 46, segments: textSegments(Array.from(price.childNodes), colorOf) },
+        ...dutchLines.map((group, index) => ({
+          y: 120 + index * 40,
+          size: 28,
+          segments: textSegments(group, colorOf),
+        })),
+      ]
+        .map((line) => ({ ...line, segments: spaced(line.segments) }))
+        .filter((line) => line.segments.length);
+    }
+
+    function drawSaleText(ctx) {
+      ctx.save();
+      ctx.translate(PRINT.width / 2, PRINT.textCenterY);
+      ctx.rotate((-2 * Math.PI) / 180);
+      saleLines().forEach((line) => drawRichLine(ctx, line));
+      ctx.restore();
+    }
+
+    function knitPattern(ctx, { y1, y2 }, unit) {
+      const size = Math.round(12 * unit * PRINT.scale);
+      const tile = document.createElement('canvas');
+      tile.width = size;
+      tile.height = size;
+      const tileCtx = tile.getContext('2d');
+      tileCtx.fillStyle = y2;
+      tileCtx.fillRect(0, 0, size, size);
+      tileCtx.strokeStyle = y1;
+      tileCtx.lineWidth = size * 0.28;
+      tileCtx.lineCap = 'round';
+      tileCtx.lineJoin = 'round';
+      tileCtx.beginPath();
+      tileCtx.moveTo(size * 0.08, size * 0.2);
+      tileCtx.lineTo(size / 2, size * 0.72);
+      tileCtx.lineTo(size * 0.92, size * 0.2);
+      tileCtx.stroke();
+      const pattern = ctx.createPattern(tile, 'repeat');
+      pattern.setTransform(new DOMMatrix().scale(1 / PRINT.scale));
+      return pattern;
+    }
+
+    function drawScallops(ctx, { box, color, unit }) {
+      const radius = 6 * unit;
+      const across = Math.round(box.width / (12 * unit));
+      const down = Math.round(box.height / (12 * unit));
+      ctx.fillStyle = color;
+      for (let i = 0; i <= across; i++) {
+        const x = box.x + (box.width * i) / across;
+        drawDot(ctx, { x, y: box.y, radius });
+        drawDot(ctx, { x, y: box.y + box.height, radius });
+      }
+      for (let i = 0; i <= down; i++) {
+        const y = box.y + (box.height * i) / down;
+        drawDot(ctx, { x: box.x, y, radius });
+        drawDot(ctx, { x: box.x + box.width, y, radius });
+      }
+    }
+
+    function drawHanger(ctx, { box, colors, unit }) {
+      const apexY = box.y - 34 * unit;
+      const footY = box.y + 2 * unit;
+      const footInset = box.width * (0.15 + 0.04 * 0.7);
+      ctx.save();
+      ctx.strokeStyle = colors.y2;
+      ctx.lineWidth = 3 * unit;
+      ctx.setLineDash([4 * unit, 2 * unit]);
+      ctx.beginPath();
+      ctx.moveTo(box.x + footInset, footY);
+      ctx.lineTo(box.x + box.width / 2, apexY);
+      ctx.lineTo(box.x + box.width - footInset, footY);
+      ctx.stroke();
+      ctx.restore();
+
+      const radius = 10 * unit;
+      const centerX = box.x + box.width / 2;
+      const centerY = box.y - 36 * unit;
+      ctx.fillStyle = colors.y1;
+      for (let i = 0; i < 8; i++) {
+        const angle = (i / 8) * Math.PI * 2;
+        drawDot(ctx, { x: centerX + Math.cos(angle) * radius * 0.7, y: centerY + Math.sin(angle) * radius * 0.7, radius: radius * 0.45 });
+      }
+      const fluff = ctx.createRadialGradient(centerX - radius * 0.3, centerY - radius * 0.3, 0, centerX, centerY, radius);
+      fluff.addColorStop(0, colors.y3);
+      fluff.addColorStop(0.5, colors.y1);
+      fluff.addColorStop(1, colors.y2);
+      ctx.fillStyle = fluff;
+      drawDot(ctx, { x: centerX, y: centerY, radius });
+    }
+
+    function drawFlower(ctx, { x, y, colors, unit }) {
+      ctx.fillStyle = colors.petal;
+      for (let i = 0; i < 5; i++) {
+        const angle = -Math.PI / 2 + (i * 2 * Math.PI) / 5;
+        drawDot(ctx, { x: x + Math.cos(angle) * 9 * unit, y: y + Math.sin(angle) * 9 * unit, radius: 6.5 * unit });
+      }
+      ctx.fillStyle = colors.bud;
+      drawDot(ctx, { x, y, radius: 5.5 * unit });
+    }
+
+    function drawPolaroid(ctx, { photo, x, y, unit, palette }) {
+      ctx.fillStyle = palette.paper;
+      ctx.fillRect(x, y, 170 * unit, 212 * unit);
+      ctx.drawImage(photo.querySelector('img'), x + 10 * unit, y + 10 * unit, 150 * unit, 150 * unit);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = palette.ink;
+      ctx.font = markerFont(15 * unit);
+      ctx.fillText(photo.querySelector('.caption').textContent, x + 85 * unit, y + 181.5 * unit, 150 * unit);
+      ctx.fillStyle = palette.muted;
+      ctx.font = markerFont(10 * unit);
+      ctx.fillText(photo.querySelector('.date').textContent, x + 85 * unit, y + 199 * unit);
+    }
+
+    function drawFrame(ctx, { frame, centerX, palette }) {
+      const unit = PRINT.photoWidth / 170;
+      const border = 16 * unit;
+      const windowWidth = 170 * unit;
+      const windowHeight = 212 * unit;
+      const width = windowWidth + border * 2;
+      const height = windowHeight + border * 2;
+      const box = { x: -width / 2, y: -height / 2, width, height };
+      const colors = {
+        y1: cssVar(frame, '--y1'),
+        y2: cssVar(frame, '--y2'),
+        y3: cssVar(frame, '--y3'),
+        petal: cssVar(frame, '--petal'),
+        bud: cssVar(frame, '--bud'),
+      };
+
+      ctx.save();
+      ctx.translate(centerX, PRINT.framesTop + height / 2);
+      ctx.rotate(rotationOf(frame));
+      drawHanger(ctx, { box, colors, unit });
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(42, 29, 22, 0.35)';
+      ctx.shadowBlur = 24;
+      ctx.shadowOffsetY = 14;
+      ctx.fillStyle = colors.y2;
+      ctx.fillRect(box.x, box.y, width, height);
+      ctx.restore();
+
+      drawScallops(ctx, { box, color: colors.y2, unit });
+      ctx.fillStyle = knitPattern(ctx, colors, unit);
+      ctx.fillRect(box.x, box.y, width, height);
+
+      const windowX = box.x + border;
+      const windowY = box.y + border;
+      ctx.fillStyle = colors.y3;
+      ctx.fillRect(windowX, windowY, windowWidth, windowHeight);
+      ctx.save();
+      ctx.strokeStyle = colors.y1;
+      ctx.lineWidth = 3 * unit;
+      ctx.setLineDash([6 * unit, 4 * unit]);
+      const stitchOffset = 5.5 * unit;
+      ctx.strokeRect(windowX - stitchOffset, windowY - stitchOffset, windowWidth + stitchOffset * 2, windowHeight + stitchOffset * 2);
+      ctx.restore();
+
+      const photo = frame.querySelector('.frame-window .polaroid');
+      if (photo) drawPolaroid(ctx, { photo, x: windowX, y: windowY, unit, palette });
+
+      drawFlower(ctx, { x: box.x + width, y: box.y + height, colors, unit });
+      ctx.restore();
+    }
+
+    function renderPrint() {
+      const root = document.documentElement;
+      const palette = {
+        desk: cssVar(root, '--desk'),
+        dot: cssVar(root, '--dot'),
+        ink: cssVar(root, '--ink'),
+        muted: cssVar(root, '--muted'),
+        red: cssVar(root, '--red'),
+        paper: cssVar(root, '--paper'),
+      };
+      const canvas = document.createElement('canvas');
+      canvas.width = PRINT.width * PRINT.scale;
+      canvas.height = PRINT.height * PRINT.scale;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(PRINT.scale, PRINT.scale);
+
+      drawDesk(ctx, palette);
+      drawSaleText(ctx);
+      const frameWidth = PRINT.photoWidth * (202 / 170);
+      frames.forEach((frame, index) => {
+        const centerX = PRINT.width / 2 + (index - 1) * (frameWidth + PRINT.frameGap);
+        drawFrame(ctx, { frame, centerX, palette });
+      });
+      ctx.fillStyle = palette.muted;
+      ctx.font = markerFont(24);
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('thememorylabmaastricht.com · shot on PHO-CAM 1000', PRINT.width / 2, PRINT.height - 50);
+      return canvas;
+    }
+
+    async function downloadCollage() {
+      await document.fonts.load(markerFont(48)).catch(() => {});
+      downloadCanvas(renderPrint(), 'thememorylabmaastricht-pho-wall.png');
+      showToast('Saved to your downloads');
+    }
+
+    function showToast(text, actionLabel = '', action = null) {
+      toastText.textContent = text;
+      toastAction.hidden = !action;
+      if (action) {
+        toastAction.textContent = actionLabel;
+        toastAction.onclick = action;
+      }
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(hideToast, action ? 7000 : 2600);
+    }
+
+    function hideToast() {
+      clearTimeout(toastTimer);
+      toast.classList.remove('show');
+    }
+
+    function serializeCard(card) {
+      const frame = card.closest('.frame');
+      const rect = card.getBoundingClientRect();
+      return {
+        src: card.querySelector('img').getAttribute('src'),
+        caption: card.querySelector('.caption').textContent,
+        note: card.querySelector('.note').value,
+        date: card.querySelector('.date').textContent,
+        flipped: card.classList.contains('flipped'),
+        frame: frame ? frames.indexOf(frame) : -1,
+        slot: card.parentElement === slot,
+        left: Math.round(parseFloat(card.style.left) || rect.left),
+        top: Math.round(parseFloat(card.style.top) || rect.top),
+        rot: Number(card.dataset.rot || 0),
+        z: card.style.zIndex || '',
+      };
+    }
+
+    function saveState() {
+      if (restoring) return;
+      try {
+        const cards = Array.from(document.querySelectorAll('.polaroid')).map(serializeCard);
+        const yarns = frames.map((frame) => frame.getAttribute('style') || '');
+        sessionStorage.setItem(STORE_KEY, JSON.stringify({ cards, yarns }));
+      } catch {
+        return;
+      }
+    }
+
+    function scheduleSave() {
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveState, 300);
+    }
+
+    function restoreState() {
+      let stored = null;
+      try {
+        stored = JSON.parse(sessionStorage.getItem(STORE_KEY) || 'null');
+      } catch {
+        return;
+      }
+      if (!stored) return;
+      const entries = Array.isArray(stored) ? stored : stored.cards || [];
+      const yarns = Array.isArray(stored) ? [] : stored.yarns || [];
+      yarns.forEach((style, index) => {
+        if (style && frames[index]) frames[index].setAttribute('style', style);
+      });
+      if (!entries.length) return;
+      restoring = true;
+      entries.forEach((entry) => {
+        const el = createPolaroid(entry.src, entry.caption);
+        el.querySelector('.date').textContent = entry.date || todayString();
+        el.querySelector('.note').value = entry.note || '';
+        if (entry.flipped) el.classList.add('flipped');
+        el.classList.add('placed');
+        el.dataset.rot = String(entry.rot || 0);
+        if (entry.slot) {
+          slot.appendChild(el);
+        } else if (entry.frame >= 0 && frames[entry.frame]) {
+          frames[entry.frame].querySelector('.frame-window').appendChild(el);
+          el.classList.add('framed');
+          el.style.transform = '';
+          frames[entry.frame].classList.add('filled');
+        } else {
+          stage.appendChild(el);
+          el.style.left = `${entry.left}px`;
+          el.style.top = `${entry.top}px`;
+          el.style.zIndex = entry.z || '';
+          el.style.transform = `rotate(${entry.rot || 0}deg)`;
+          topZ = Math.max(topZ, Number(entry.z) || 0);
+        }
+      });
+      restoring = false;
+      updateCelebration();
+    }
+
+    function placeInFrame(frame) {
+      if (frame.classList.contains('filled')) return;
+      if (Date.now() - lastDropAt < 400) return;
+      const [card] = looseCards().sort((a, b) => Number(b.style.zIndex || 0) - Number(a.style.zIndex || 0));
+      if (!card) return;
+      dropInFrame(card, frame);
+      scheduleSave();
+    }
+
+    function resetDesk() {
+      const cards = Array.from(document.querySelectorAll('.polaroid'));
+      if (!cards.length) return;
+      resetSnapshot = cards.map((card) => {
+        const frame = card.closest('.frame');
+        return { card, frameIndex: frame ? frames.indexOf(frame) : -1, inSlot: card.parentElement === slot };
+      });
+      cards.forEach((card) => card.remove());
+      frames.forEach((frame) => frame.classList.remove('filled'));
+      saveState();
+      updateCelebration();
+      showToast('Desk cleared', 'UNDO', undoReset);
+    }
+
+    function undoReset() {
+      if (!resetSnapshot) return;
+      resetSnapshot.forEach(({ card, frameIndex, inSlot }) => {
+        if (frameIndex >= 0) {
+          frames[frameIndex].querySelector('.frame-window').appendChild(card);
+          frames[frameIndex].classList.add('filled');
+          return;
+        }
+        (inSlot ? slot : stage).appendChild(card);
+      });
+      resetSnapshot = null;
+      hideToast();
+      saveState();
+      updateCelebration();
+    }
+
+    function updateCelebration() {
+      const complete = frames.every((frame) => frame.classList.contains('filled'));
+      if (complete && !celebrated) {
+        const wall = document.querySelector('.wall');
+        wall.classList.remove('cheer');
+        void wall.offsetWidth;
+        wall.classList.add('cheer');
+        phoRain(16);
+        showToast('Wall complete! Tap DOWNLOAD for your print 🍜');
+      }
+      celebrated = complete;
+      downloadBtn.classList.toggle('celebrate', complete);
+    }
+
+    function removeCard(el) {
+      const frame = el.closest('.frame');
+      const parent = el.parentElement;
+      const frameIndex = frame ? frames.indexOf(frame) : -1;
+      el.remove();
+      if (frame) frame.classList.remove('filled');
+      saveState();
+      updateCelebration();
+      showToast('Photo removed', 'UNDO', () => {
+        if (frameIndex >= 0) {
+          frames[frameIndex].querySelector('.frame-window').appendChild(el);
+          frames[frameIndex].classList.add('filled');
+        } else {
+          parent.appendChild(el);
+        }
+        hideToast();
+        saveState();
+        updateCelebration();
+      });
+    }
+
+    function addPrintAt(src, x, y) {
+      const el = createPolaroid(src);
+      el.classList.add('placed');
+      stage.appendChild(el);
+      el.style.zIndex = String(++topZ);
+      const left = Math.min(Math.max(0, x - el.offsetWidth / 2), Math.max(0, window.innerWidth - el.offsetWidth));
+      const top = Math.min(Math.max(0, y - el.offsetHeight / 2), Math.max(0, window.innerHeight - el.offsetHeight));
+      el.style.left = `${Math.round(left)}px`;
+      el.style.top = `${Math.round(top)}px`;
+      setRotation(el, randomTilt());
+      scheduleSave();
+      return el;
+    }
+
+    async function fileToPhoto(file) {
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(file);
+      });
+      const image = await new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error('not an image'));
+        img.src = dataUrl;
+      });
+      const canvas = newPhotoCanvas();
+      const ctx = canvas.getContext('2d');
+      const side = Math.min(image.naturalWidth, image.naturalHeight);
+      ctx.filter = FILMS[filmIndex].filter;
+      ctx.drawImage(image, (image.naturalWidth - side) / 2, (image.naturalHeight - side) / 2, side, side, 0, 0, PHOTO_SIZE, PHOTO_SIZE);
+      ctx.filter = 'none';
+      addVignette(ctx);
+      return canvas.toDataURL('image/jpeg', 0.9);
+    }
+
+    async function addFiles(files, point) {
+      const images = Array.from(files || []).filter((file) => file.type.startsWith('image/'));
+      let added = 0;
+      for (const file of images) {
+        let src;
+        try {
+          src = await fileToPhoto(file);
+        } catch {
+          continue;
+        }
+        const spot = point || { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        addPrintAt(src, spot.x + added * 44, spot.y + added * 34);
+        added += 1;
+      }
+      if (added) showToast(added === 1 ? 'Photo added to the desk' : `${added} photos added to the desk`);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch {
+        const field = document.createElement('textarea');
+        field.value = text;
+        field.style.position = 'fixed';
+        field.style.opacity = '0';
+        document.body.appendChild(field);
+        field.select();
+        let copied = false;
+        try {
+          copied = document.execCommand('copy');
+        } catch {
+          copied = false;
+        }
+        field.remove();
+        return copied;
+      }
+    }
+
+    async function shareWall() {
+      const url = window.location.href;
+      const text = 'This domain is ALSO for sale: 1000 bowls of pho at Nga Ngo restaurant 🍜';
+      try {
+        const blob = await new Promise((resolve) => renderPrint().toBlob(resolve, 'image/png'));
+        const file = blob ? new File([blob], 'pho-wall.png', { type: 'image/png' }) : null;
+        if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file], title: document.title, text });
+          return;
+        }
+      } catch (error) {
+        if (error && error.name === 'AbortError') return;
+      }
+      if (navigator.share) {
+        try {
+          await navigator.share({ url, title: document.title, text });
+          return;
+        } catch (error) {
+          if (error && error.name === 'AbortError') return;
+        }
+      }
+      if (await copyText(url)) showToast('Link copied to clipboard');
+      else showToast(url);
+    }
+
+    function renderSoundButton() {
+      soundBtn.textContent = muted ? '🔇' : '🔊';
+      soundBtn.setAttribute('aria-pressed', String(muted));
+      soundBtn.setAttribute('aria-label', muted ? 'Unmute sound' : 'Mute sound');
+    }
+
+    function toggleSound() {
+      muted = !muted;
+      renderSoundButton();
+      if (!muted) {
+        unlockAudio();
+        beep();
+      }
+      try {
+        localStorage.setItem('pho-muted', muted ? '1' : '0');
+      } catch {
+        return;
+      }
+    }
+
+    function toggleTimer() {
+      timerSeconds = timerSeconds ? 0 : 3;
+      timerBtn.setAttribute('aria-pressed', String(Boolean(timerSeconds)));
+      timerBtn.setAttribute('aria-label', timerSeconds ? '3s self-timer on' : '3s self-timer off');
+      showToast(timerSeconds ? 'Self-timer on: 3 seconds to pose' : 'Self-timer off');
+    }
+
+    function openHelp() {
+      help.hidden = false;
+      helpClose.focus();
+    }
+
+    function closeHelp() {
+      help.hidden = true;
+      helpBtn.focus();
+    }
+
+    function cycleFilm() {
+      filmIndex = (filmIndex + 1) % FILMS.length;
+      filmBtn.textContent = `🎞 film: ${FILMS[filmIndex].name}`;
+      showToast(`Film: ${FILMS[filmIndex].name}`);
+    }
+
+    function reyarn(frame) {
+      const current = cssVar(frame, '--y2');
+      const options = YARNS.filter((yarn) => yarn.y2 !== current);
+      const next = options[Math.floor(Math.random() * options.length)];
+      Object.entries(next).forEach(([key, value]) => frame.style.setProperty(`--${key}`, value));
+      frame.classList.remove('reyarn');
+      void frame.offsetWidth;
+      frame.classList.add('reyarn');
+      scheduleSave();
+    }
+
+    function phoRain(count = 22) {
+      if (reducedMotion.matches) return;
+      for (let i = 0; i < count; i += 1) {
+        const drop = document.createElement('span');
+        drop.className = 'rain';
+        drop.setAttribute('aria-hidden', 'true');
+        drop.textContent = RAIN_DROPS[Math.floor(Math.random() * RAIN_DROPS.length)];
+        drop.style.left = `${Math.random() * 100}vw`;
+        drop.style.fontSize = `${22 + Math.random() * 30}px`;
+        drop.style.animationDuration = `${2.4 + Math.random() * 2}s`;
+        drop.style.animationDelay = `${Math.random() * 0.9}s`;
+        document.body.appendChild(drop);
+        drop.addEventListener('animationend', () => drop.remove());
+        setTimeout(() => drop.remove(), 7000);
+      }
+    }
+
+    function openZoom(el) {
+      zoomedCard = el;
+      zoomImg.src = el.querySelector('img').src;
+      zoomCaption.textContent = el.querySelector('.caption').textContent;
+      zoomNote.textContent = el.querySelector('.note').value;
+      zoomDate.textContent = el.querySelector('.date').textContent;
+      zoom.hidden = false;
+      zoomClose.focus();
+    }
+
+    function closeZoom() {
+      zoom.hidden = true;
+      zoomedCard = null;
+    }
+
+    function downloadCanvas(canvas, filename) {
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    }
+
+    function savePrint(el) {
+      const unit = 4;
+      const canvas = document.createElement('canvas');
+      canvas.width = 170 * unit;
+      canvas.height = 212 * unit;
+      const root = document.documentElement;
+      const palette = { paper: cssVar(root, '--paper'), ink: cssVar(root, '--ink'), muted: cssVar(root, '--muted') };
+      drawPolaroid(canvas.getContext('2d'), { photo: el, x: 0, y: 0, unit, palette });
+      const caption = el.querySelector('.caption').textContent.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+      downloadCanvas(canvas, `pho-print${caption ? `-${caption}` : ''}.png`);
+      showToast('Print saved');
+    }
+
+    frames.forEach((frame) => {
+      const frameWindow = frame.querySelector('.frame-window');
+      frameWindow.addEventListener('click', () => placeInFrame(frame));
+      frameWindow.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        placeInFrame(frame);
+      });
+      frame.addEventListener('click', (event) => {
+        if (event.target.closest('.frame-window, .polaroid')) return;
+        if (Date.now() - lastDropAt < 400) return;
+        reyarn(frame);
+      });
+    });
+
+    shutter.addEventListener('pointerdown', () => {
+      unlockAudio();
+      startCamera();
+    });
+    shutter.addEventListener('click', snap);
+    resetBtn.addEventListener('click', resetDesk);
+    downloadBtn.addEventListener('click', downloadCollage);
+    addBtn.addEventListener('click', () => fileInput.click());
+    fileInput.addEventListener('change', async () => {
+      await addFiles(fileInput.files);
+      fileInput.value = '';
+    });
+    shareBtn.addEventListener('click', shareWall);
+    soundBtn.addEventListener('click', toggleSound);
+    timerBtn.addEventListener('click', toggleTimer);
+    filmBtn.addEventListener('click', cycleFilm);
+    helpBtn.addEventListener('click', openHelp);
+    helpClose.addEventListener('click', closeHelp);
+    help.addEventListener('click', (event) => {
+      if (event.target === help) closeHelp();
+    });
+    zoomClose.addEventListener('click', closeZoom);
+    zoomSave.addEventListener('click', () => {
+      if (zoomedCard) savePrint(zoomedCard);
+    });
+    zoom.addEventListener('click', (event) => {
+      if (event.target === zoom) closeZoom();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (!help.hidden) closeHelp();
+        if (!zoom.hidden) closeZoom();
+      }
+      if (event.code !== 'Space') return;
+      if (!help.hidden || !zoom.hidden) return;
+      if (event.target.closest && event.target.closest('.caption, .note, button, a, [role="button"]')) return;
+      event.preventDefault();
+      unlockAudio();
+      startCamera();
+      snap();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key.length !== 1) return;
+      if (event.target.closest && event.target.closest('.caption, .note, input, textarea')) return;
+      typedWord = (typedWord + event.key.toLowerCase()).slice(-3);
+      if (typedWord !== 'pho') return;
+      typedWord = '';
+      phoRain();
+    });
+    document.addEventListener('dragenter', (event) => {
+      if (!Array.from(event.dataTransfer?.types || []).includes('Files')) return;
+      event.preventDefault();
+      dragDepth += 1;
+      dropHint.classList.add('on');
+    });
+    document.addEventListener('dragover', (event) => {
+      if (!Array.from(event.dataTransfer?.types || []).includes('Files')) return;
+      event.preventDefault();
+      event.dataTransfer.dropEffect = 'copy';
+    });
+    document.addEventListener('dragleave', (event) => {
+      if (!Array.from(event.dataTransfer?.types || []).includes('Files')) return;
+      dragDepth = Math.max(0, dragDepth - 1);
+      if (!dragDepth) dropHint.classList.remove('on');
+    });
+    document.addEventListener('drop', async (event) => {
+      if (!Array.from(event.dataTransfer?.types || []).includes('Files')) return;
+      event.preventDefault();
+      dragDepth = 0;
+      dropHint.classList.remove('on');
+      await addFiles(event.dataTransfer.files, { x: event.clientX, y: event.clientY });
+    });
+    window.addEventListener('pagehide', saveState);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') saveState();
+    });
+
+    renderSoundButton();
+    restoreState();
+    updateCelebration();
+  </script>
+</body>
+</html>
